@@ -92,7 +92,7 @@ Antes de reportar un defecto, identifica la causa:
 | Causa probable | Señales | Qué hacer |
 |---|---|---|
 | **Defecto del SUT** | El fallo se repite siempre con los mismos pasos y datos; el comportamiento contradice lo documentado | Registrar el defecto con evidencia (pasos, resultado esperado y obtenido, `requestId` si hay error) |
-| **Escenario activo** | El escenario no es `NORMAL` (por ejemplo, `SERVER_ERROR`) | Confirmar en `scenario-badge` (o `login-scenario-badge` en el inicio de sesión) qué escenario estaba activo y cuál se esperaba |
+| **Escenario activo** | El escenario no es `NORMAL` (por ejemplo, `SERVER_ERROR`) | Confirmar en `scenario-badge` (o `login-scenario-badge` en el inicio de sesión, visible solo si el escenario no es NORMAL) qué escenario estaba activo y cuál se esperaba |
 | **Prueba frágil** | Falla al cambiar texto, orden o estilos; usa XPath largos, posiciones o clases CSS | Usar `data-testid` (ver [selenium.md](selenium.md)) |
 | **Sincronización** | Falla a veces; pasa al ejecutar paso a paso; escenario `SLOW_RESPONSE` | Esperar el estado observable (`wait for …`) en lugar de pausas fijas |
 | **Ambiente** | La API no responde, puerto ocupado, datos del navegador de otra ejecución | Verificar `npm run dev`, `/api/health`, limpiar `localStorage` o usar una ventana nueva |

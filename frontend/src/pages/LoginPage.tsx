@@ -1,7 +1,5 @@
 import { Eye, EyeOff } from 'lucide-react';
 import { useRef, useState, type FormEvent } from 'react';
-import { Link } from 'react-router';
-import { AboutButton } from '../components/layout/AboutDialog.tsx';
 import { ScenarioBadge } from '../components/layout/ScenarioBadge.tsx';
 import { ErrorDetails } from '../components/feedback/ErrorDetails.tsx';
 import { Notice } from '../components/feedback/Notice.tsx';
@@ -10,6 +8,7 @@ import { Button } from '../components/ui/Button.tsx';
 import { Card } from '../components/ui/Card.tsx';
 import { useAuth } from '../hooks/useAuth.ts';
 import { useDocumentTitle } from '../hooks/useDocumentTitle.ts';
+import { useScenario } from '../hooks/useScenario.ts';
 import { ApiError } from '../services/apiClient.ts';
 
 interface FieldErrors {
@@ -28,12 +27,6 @@ const REQUIRED_MESSAGES = {
   username: 'El usuario es obligatorio.',
   password: 'La contraseña es obligatoria.',
 } as const;
-
-const DEMO_ACCOUNTS = [
-  { role: 'Pasajero', username: 'pasajero.demo', password: 'Pasajero2026!' },
-  { role: 'Administrador', username: 'admin.demo', password: 'Admin2026!' },
-  { role: 'Cuenta bloqueada', username: 'bloqueado.demo', password: 'Bloqueado2026!' },
-];
 
 function validate(username: string, password: string): FieldErrors {
   return {
@@ -62,6 +55,7 @@ function toFailure(error: unknown): LoginFailure {
 
 export function LoginPage() {
   const { login, notice, clearNotice } = useAuth();
+  const { scenario } = useScenario();
   useDocumentTitle('Iniciar sesión');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -103,7 +97,7 @@ export function LoginPage() {
     <div className="space-y-4">
       <Card data-testid="page-login">
         <h1 className="text-xl font-bold text-slate-900">Iniciar sesión</h1>
-        <p className="mt-1 text-sm text-slate-600">Ingresa con una cuenta de demostración.</p>
+        <p className="mt-1 text-sm text-slate-600">Ingresa con la cuenta que te comparta tu docente.</p>
 
         <div className="mt-5 space-y-4" aria-live="polite">
           {notice === 'session-expired' && (
@@ -170,45 +164,14 @@ export function LoginPage() {
         </form>
       </Card>
 
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-700 bg-slate-800 px-5 py-3 text-sm text-slate-200" data-testid="login-scenario">
-        <ScenarioBadge testId="login-scenario-badge" />
-        <Link to="/lab" className="inline-flex min-h-6 items-center font-semibold text-white underline underline-offset-2" data-testid="link-login-lab">
-          Laboratorio de escenarios
-        </Link>
-        <a
-          href="/presentacion/"
-          target="_blank"
-          rel="noopener"
-          className="inline-flex min-h-6 items-center font-semibold text-white underline underline-offset-2"
-          data-testid="link-login-presentation"
-        >
-          Presentación<span className="sr-only"> (se abre en una pestaña nueva)</span>
-        </a>
-        <AboutButton
-          testId="link-login-about"
-          className="inline-flex min-h-6 items-center font-semibold text-white underline underline-offset-2"
-        />
-      </div>
-
-      <section
-        className="rounded-2xl border border-slate-700 bg-slate-800 p-5 text-sm text-slate-200"
-        aria-labelledby="demo-credentials-title"
-        data-testid="demo-credentials"
-      >
-        <h2 id="demo-credentials-title" className="font-semibold text-white">
-          Cuentas de demostración (datos ficticios)
-        </h2>
-        <ul className="mt-3 space-y-2">
-          {DEMO_ACCOUNTS.map((account) => (
-            <li key={account.username} className="flex flex-wrap gap-x-2">
-              <span className="font-medium text-white">{account.role}:</span>
-              <code>{account.username}</code>
-              <span aria-hidden="true">/</span>
-              <code>{account.password}</code>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {/* Only the login window in NORMAL. Another scenario may break login, so its badge (a link to the
+          public lab) appears as the way back to NORMAL. */}
+      {scenario !== 'NORMAL' && (
+        <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-slate-700 bg-slate-800 px-5 py-3 text-sm text-slate-200" data-testid="login-scenario">
+          <ScenarioBadge testId="login-scenario-badge" />
+          <span>Escenario de prueba activo. Ábrelo para volver a NORMAL.</span>
+        </div>
+      )}
     </div>
   );
 }

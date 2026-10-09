@@ -93,11 +93,12 @@ interface AboutButtonProps {
   testId: string;
   className?: string;
   showIcon?: boolean;
+  iconClassName?: string;
   onOpen?: () => void;
 }
 
 /** Button that opens the "Acerca de" modal; used in the sidebar and on the login page. */
-export function AboutButton({ testId, className, showIcon = false, onOpen }: AboutButtonProps) {
+export function AboutButton({ testId, className, showIcon = false, iconClassName = 'h-5 w-5', onOpen }: AboutButtonProps) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -111,7 +112,7 @@ export function AboutButton({ testId, className, showIcon = false, onOpen }: Abo
         aria-haspopup="dialog"
         data-testid={testId}
       >
-        {showIcon && <Info className="h-5 w-5 shrink-0" aria-hidden="true" />}
+        {showIcon && <Info className={cn('shrink-0', iconClassName)} aria-hidden="true" />}
         <span>Acerca de</span>
       </button>
       <AboutDialog open={open} onClose={() => setOpen(false)} />

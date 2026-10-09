@@ -108,7 +108,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         <div className="border-t border-slate-800 px-3 py-3">
           {/* Static deck served from /presentacion/, outside the SPA router. */}
           <a
-            href="/presentacion/"
+            href="/presentacion/index.html"
             target="_blank"
             rel="noopener"
             onClick={() => onClose(false)}

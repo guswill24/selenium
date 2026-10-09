@@ -6,8 +6,7 @@ Mi Ruta incluye la presentación de la sesión CIPAS *Calidad de Software – Au
 
 | Desde | Cómo |
 |---|---|
-| Inicio de sesión (`/login`) | Enlace **Presentación** (`link-login-presentation`) |
-| Menú lateral (con sesión iniciada) | **Presentación** al pie del menú (`nav-presentation`) |
+| Menú lateral | **Presentación** al pie del menú (`nav-presentation`) |
 | Dirección directa | `/presentacion/`; con `#N` abre la lámina N (por ejemplo `/presentacion/#18`) |
 
 Se abre en una pestaña nueva para no interrumpir la sesión ni el escenario activo de Mi Ruta.

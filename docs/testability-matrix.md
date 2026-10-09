@@ -35,9 +35,11 @@ Verificado automáticamente en esta fase (todas las pantallas, como pasajero, ad
 | `admin-route-create`, `admin-route-edit` | `/admin` (botón crear; formulario de edición) |
 | `server-error`, `service-unavailable`, `loading-indicator` | Cualquier página, según el escenario activo |
 
-Enlaces a la presentación de la sesión (se abren en una pestaña nueva, fuera del sistema bajo prueba): `nav-presentation` en el menú lateral y `link-login-presentation` en `/login`. Ver [presentation.md](presentation.md).
+Enlaces a la presentación de la sesión (se abren en una pestaña nueva, fuera del sistema bajo prueba): `nav-presentation` en el menú lateral. Ver [presentation.md](presentation.md).
 
-Ventana **Acerca de** (ficha del docente), en un `<dialog>` nativo modal: se abre con `nav-about` (menú lateral) o `link-login-about` (`/login`); contenido `about-dialog`, `about-teacher-name`, `about-teacher-role`, `about-teacher-photo`, `about-teacher-education`, `about-teacher-experience`; se cierra con `about-dialog-close`, con Escape o con un clic fuera de la ventana, y el foco vuelve al botón que la abrió.
+Ventana **Acerca de** (ficha del docente), en un `<dialog>` nativo modal: se abre con `nav-about` (menú lateral); contenido `about-dialog`, `about-teacher-name`, `about-teacher-role`, `about-teacher-photo`, `about-teacher-education`, `about-teacher-experience`; se cierra con `about-dialog-close`, con Escape o con un clic fuera de la ventana, y el foco vuelve al botón que la abrió.
+
+La pantalla `/login` muestra solo la ventana de inicio de sesión. Si el escenario activo no es NORMAL, aparece debajo `login-scenario` con `login-scenario-badge`, que lleva al laboratorio para volver a NORMAL (un escenario puede impedir el inicio de sesión).
 
 Microinteracción de bienvenida `arrival-bus`: tras un inicio de sesión exitoso, una tarjeta en la esquina inferior derecha muestra un bus que llega a una parada (unos 3,4 s, sin sonido) y luego sale del DOM. **No bloquea ni retrasa** la página: `dashboard` aparece de inmediato, la tarjeta no recibe clics (los clics llegan a los elementos de debajo), no desplaza el contenido y está oculta para lectores de pantalla. No aparece al recargar con la sesión guardada ni con `prefers-reduced-motion`. Si una captura de pantalla debe salir sin ella, esperar a que `arrival-bus` deje de estar presente.
 
