@@ -1,0 +1,6 @@
+{
+  // Used by the Vercel Node.js runtime to compile the API function (api/index.ts),
+  // and by editors for files at the root. Same compiler options as the backend.
+  "extends": "./backend/tsconfig.json",
+  "include": ["api", "backend/src"]
+}

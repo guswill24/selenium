@@ -24,7 +24,9 @@ export function requireAuth(req: Request, res: Response, next: NextFunction): vo
   }
 
   const check = verifyToken(token, { secret: config.authSecret });
-  if (!check.ok) {
+  // Explicit comparison: narrows the union even when strictNullChecks is off
+  // (the Vercel Node.js builder type-checks with its own, looser options).
+  if (check.ok === false) {
     throw check.reason === 'EXPIRED'
       ? new HttpError(401, 'SESSION_EXPIRED', 'Tu sesión expiró. Inicia sesión nuevamente.')
       : new HttpError(401, 'INVALID_TOKEN', 'La sesión no es válida. Inicia sesión nuevamente.');

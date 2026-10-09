@@ -10,6 +10,11 @@ function positiveInteger(value: string | undefined, fallback: number): number {
   return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
 }
 
+const isDeployed = process.env.NODE_ENV === 'production' || Boolean(process.env.VERCEL);
+if (isDeployed && !process.env.AUTH_SECRET) {
+  console.warn('[mi-ruta] AUTH_SECRET is not set: session tokens are signed with the public demo secret.');
+}
+
 export const config = {
   authSecret: process.env.AUTH_SECRET || DEMO_AUTH_SECRET,
   sessionTtlMinutes: positiveInteger(process.env.SESSION_TTL_MINUTES, DEFAULT_SESSION_TTL_MINUTES),
