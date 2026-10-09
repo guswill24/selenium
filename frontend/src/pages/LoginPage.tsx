@@ -1,6 +1,7 @@
 import { Eye, EyeOff } from 'lucide-react';
 import { useRef, useState, type FormEvent } from 'react';
 import { Link } from 'react-router';
+import { AboutButton } from '../components/layout/AboutDialog.tsx';
 import { ScenarioBadge } from '../components/layout/ScenarioBadge.tsx';
 import { ErrorDetails } from '../components/feedback/ErrorDetails.tsx';
 import { Notice } from '../components/feedback/Notice.tsx';
@@ -183,6 +184,10 @@ export function LoginPage() {
         >
           Presentación<span className="sr-only"> (se abre en una pestaña nueva)</span>
         </a>
+        <AboutButton
+          testId="link-login-about"
+          className="inline-flex min-h-6 items-center font-semibold text-white underline underline-offset-2"
+        />
       </div>
 
       <section

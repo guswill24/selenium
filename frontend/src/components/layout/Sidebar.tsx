@@ -5,6 +5,7 @@ import { useAuth } from '../../hooks/useAuth.ts';
 import { useMediaQuery } from '../../hooks/useMediaQuery.ts';
 import { sectionsForRole } from '../../routes/navigation.ts';
 import { cn } from '../../utils/cn.ts';
+import { AboutButton } from './AboutDialog.tsx';
 import { Brand } from './Brand.tsx';
 
 interface SidebarProps {
@@ -28,7 +29,8 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
     closeButtonRef.current?.focus();
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose(true);
+      // Escape inside an open modal (e.g. "Acerca de") closes only that modal, not the drawer behind it.
+      if (event.key === 'Escape' && !document.querySelector('dialog[open]')) onClose(true);
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
@@ -72,7 +74,8 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           </button>
         </div>
 
-        <nav aria-label="Navegación principal" className="flex-1 overflow-y-auto px-3 pb-6" data-testid="main-nav">
+        {/* min-h-0 lets the list shrink and scroll, so the footer links stay inside short (phone) screens. */}
+        <nav aria-label="Navegación principal" className="min-h-0 flex-1 overflow-y-auto px-3 pb-6" data-testid="main-nav">
           {sections.map((section) => (
             <div key={section.id} className="mt-4 first:mt-0">
               <h2 className="px-3 pb-2 text-xs font-semibold tracking-wider text-slate-400 uppercase">{section.label}</h2>
@@ -117,6 +120,11 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             <ExternalLink className="ml-auto h-4 w-4 shrink-0" aria-hidden="true" />
             <span className="sr-only">(se abre en una pestaña nueva)</span>
           </a>
+          <AboutButton
+            testId="nav-about"
+            showIcon
+            className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
+          />
         </div>
 
         <p className="border-t border-slate-800 px-5 py-4 text-xs text-slate-400">
