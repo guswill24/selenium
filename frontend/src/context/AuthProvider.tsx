@@ -44,6 +44,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [notice, setNotice] = useState<SessionNotice>(() => readPendingNotice(initiallyExpired));
   const [justLoggedOut, setJustLoggedOut] = useState(false);
+  const [justLoggedIn, setJustLoggedIn] = useState(false);
 
   const endSession = useCallback((reason: SessionNotice) => {
     removeKey(storageKeys.session);
@@ -53,6 +54,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setStatus('anonymous');
     setNotice(reason);
     setJustLoggedOut(reason === 'logged-out');
+    setJustLoggedIn(false);
     if (reason) writeSession(storageKeys.authNotice, reason);
   }, []);
 
@@ -101,8 +103,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setStatus('authenticated');
     setNotice(null);
     setJustLoggedOut(false);
+    setJustLoggedIn(true);
     removeSession(storageKeys.authNotice);
   }, []);
+
+  const acknowledgeLogin = useCallback(() => setJustLoggedIn(false), []);
 
   const logout = useCallback(async () => {
     try {
@@ -136,8 +141,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<AuthContextValue>(
-    () => ({ status, user, notice, justLoggedOut, login, logout, updateProfile, resetProfile, clearNotice }),
-    [status, user, notice, justLoggedOut, login, logout, updateProfile, resetProfile, clearNotice],
+    () => ({
+      status, user, notice, justLoggedOut, justLoggedIn, acknowledgeLogin, login, logout, updateProfile, resetProfile, clearNotice,
+    }),
+    [status, user, notice, justLoggedOut, justLoggedIn, acknowledgeLogin, login, logout, updateProfile, resetProfile, clearNotice],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

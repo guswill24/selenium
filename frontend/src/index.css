@@ -62,3 +62,82 @@
     }
   }
 }
+
+/* Welcome micro-interaction after login (components/layout/ArrivalBus.tsx): the bus drives up to the stop,
+   brakes with a nose dip, flashes its light, lights the LED sign; then the card fades out. */
+@layer components {
+  .arrival-bus {
+    animation: arrival-card 3.4s ease both;
+  }
+
+  .arrival-bus__drive {
+    animation: arrival-drive 1.5s cubic-bezier(0.15, 0.75, 0.3, 1) 0.15s both;
+  }
+
+  .arrival-bus__brake {
+    transform-box: fill-box;
+    transform-origin: 0% 100%;
+    animation: arrival-brake 0.7s ease-out 1.6s both;
+  }
+
+  .arrival-bus__led {
+    animation: arrival-led 0.7s steps(1) 1.8s both;
+  }
+
+  .arrival-bus__light {
+    animation: arrival-light 0.6s ease-in-out 1.7s both;
+  }
+
+  .arrival-bus__dust {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: arrival-dust 0.9s ease-out 1.45s both;
+  }
+
+  .arrival-bus__stop {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: arrival-stop 0.6s ease-out 2.2s both;
+  }
+
+  @keyframes arrival-card {
+    0% { opacity: 0; transform: translateY(12px); }
+    8% { opacity: 1; transform: none; }
+    85% { opacity: 1; transform: none; }
+    100% { opacity: 0; transform: translateY(6px); }
+  }
+
+  @keyframes arrival-drive {
+    from { transform: translateX(230px); }
+    to { transform: translateX(0); }
+  }
+
+  @keyframes arrival-brake {
+    0% { transform: none; }
+    30% { transform: rotate(-2.2deg) translateY(1px); }
+    60% { transform: rotate(0.9deg); }
+    80% { transform: rotate(-0.3deg); }
+    100% { transform: none; }
+  }
+
+  @keyframes arrival-led {
+    0%, 40%, 80% { fill: #78350f; }
+    20%, 60%, 100% { fill: #fbbf24; }
+  }
+
+  @keyframes arrival-light {
+    0%, 50%, 100% { fill: #fde68a; }
+    25%, 75% { fill: #fffbeb; filter: drop-shadow(0 0 4px #fbbf24); }
+  }
+
+  @keyframes arrival-dust {
+    0% { opacity: 0; transform: scale(0.4); }
+    20% { opacity: 0.8; }
+    100% { opacity: 0; transform: translateX(22px) scale(1.6); }
+  }
+
+  @keyframes arrival-stop {
+    0%, 100% { transform: none; }
+    50% { transform: scale(1.08); }
+  }
+}

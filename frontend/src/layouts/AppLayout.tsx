@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useMatches } from 'react-router';
 import { ServiceAlertBanner } from '../components/alerts/ServiceAlertBanner.tsx';
+import { ArrivalBus } from '../components/layout/ArrivalBus.tsx';
 import { Breadcrumbs, type RouteHandle } from '../components/layout/Breadcrumbs.tsx';
 import { useDocumentTitle } from '../hooks/useDocumentTitle.ts';
 import { Sidebar } from '../components/layout/Sidebar.tsx';
@@ -66,6 +67,8 @@ export function AppLayout() {
           Mi Ruta – Laboratorio de Calidad de Software · Calidad de Software 202016903 · UNAD · Datos simulados con fines educativos
         </footer>
       </div>
+
+      <ArrivalBus />
     </div>
   );
 }

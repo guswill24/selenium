@@ -37,6 +37,8 @@ Verificado automáticamente en esta fase (todas las pantallas, como pasajero, ad
 
 Enlaces a la presentación de la sesión (se abren en una pestaña nueva, fuera del sistema bajo prueba): `nav-presentation` en el menú lateral y `link-login-presentation` en `/login`. Ver [presentation.md](presentation.md).
 
+Microinteracción de bienvenida `arrival-bus`: tras un inicio de sesión exitoso, una tarjeta en la esquina inferior derecha muestra un bus que llega a una parada (unos 3,4 s, sin sonido) y luego sale del DOM. **No bloquea ni retrasa** la página: `dashboard` aparece de inmediato, la tarjeta no recibe clics (los clics llegan a los elementos de debajo), no desplaza el contenido y está oculta para lectores de pantalla. No aparece al recargar con la sesión guardada ni con `prefers-reduced-motion`. Si una captura de pantalla debe salir sin ella, esperar a que `arrival-bus` deje de estar presente.
+
 ## Matriz
 
 Atributos ISO/IEC 25010: **AF** adecuación funcional · **ED** eficiencia del desempeño · **CO** compatibilidad · **CI** capacidad de interacción / usabilidad · **FI** fiabilidad · **SE** seguridad · **MA** mantenibilidad · **PO** portabilidad.

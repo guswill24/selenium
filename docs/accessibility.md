@@ -23,7 +23,7 @@ Mi Ruta aplica buenas prácticas básicas de accesibilidad (WCAG 2.1/2.2, nivele
 | Imágenes e íconos | Íconos decorativos con `aria-hidden`; el mapa SVG tiene título, descripción y una **alternativa textual** |
 | Tablas | `<caption>` y encabezados con `scope`; el recuadro con desplazamiento horizontal se puede enfocar con el teclado |
 | Objetivos táctiles | Controles de al menos 24 × 24 px (WCAG 2.5.8) |
-| Movimiento | Se respeta `prefers-reduced-motion`; el menú no usa animaciones |
+| Movimiento | Se respeta `prefers-reduced-motion`; el menú no usa animaciones. La microinteracción del bus tras el login (`arrival-bus`) es decorativa (`aria-hidden`), sin sonido, dura unos 3,4 s y no se muestra con movimiento reducido |
 | Ampliación | Sin desplazamiento horizontal a 320 px de ancho ni con el texto al 200 % |
 
 ## Cómo se verificó
