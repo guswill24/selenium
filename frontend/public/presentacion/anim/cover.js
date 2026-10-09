@@ -406,7 +406,10 @@ void main(){
     }
 
     // ---------- audio: city ambience and effects (the music lives in the deck) ----------
-    const AU = { ctx: null, master: null, buses: {}, session: null, timers: [], level: 1 };
+    const AU = { ctx: null, master: null, buses: {}, session: null, timers: [], level: 1, horn: null };
+    // Real horn of a MAN city bus (assets/bus-horn.wav, a 0.85 s double beep cut from "WWS CityBusMANSG220horn.ogg",
+    // Work With Sounds / Technical Museum of Slovenia, CC BY 4.0, via Wikimedia Commons). Downloaded now, decoded on unlock.
+    const hornData = fetch(src.replace(/[^/]*$/, 'bus-horn.wav')).then(r => r.ok ? r.arrayBuffer() : Promise.reject(new Error(r.status))).catch(() => null);
     function unlockAudio() {
       if (AU.ctx) { if (AU.ctx.state !== 'running') AU.ctx.resume().catch(() => {}); return; }
       const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
@@ -417,6 +420,7 @@ void main(){
       const len = C.sampleRate * 4, nb = C.createBuffer(2, len, C.sampleRate);
       for (let ch = 0; ch < 2; ch++) { const d = nb.getChannelData(ch); for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1; }
       AU.noise = nb; buildAmbience(); applyLevel();
+      AU.hornReady = hornData.then(a => a ? C.decodeAudioData(a.slice(0)) : null).then(b => { AU.horn = b; }).catch(() => {});
       if (running) scheduleFx(now());
     }
     const noiseSrc = () => { const s = AU.ctx.createBufferSource(); s.buffer = AU.noise; s.loop = true; s.start(0, Math.random() * 3.5); return s; };
@@ -456,6 +460,14 @@ void main(){
       g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(v, t + .03); g.gain.exponentialRampToValueAtTime(.001, t + d); chain(s, f, g, dst); s.stop(t + d + .05); }
     function horn(dst, t, v) { const lp = filt('lowpass', 1400, .8); lp.connect(dst);
       for (const [dt, f] of [[0, 466], [.2, 466]]) { ping(lp, t + dt, f, v, .16, 0, 'sawtooth'); ping(lp, t + dt, f * 1.26, v * .7, .16, 0, 'sawtooth'); } }
+    function busHorn(dst, when, v) { // the recorded horn once it is decoded; the synthesised one meanwhile or if it failed to load
+      const play = () => {
+        if (AU.session !== dst || when < AU.ctx.currentTime) return;
+        if (!AU.horn) { horn(dst, when, .05); return; }
+        const s = AU.ctx.createBufferSource(); s.buffer = AU.horn; chain(s, gainN(v), panner(.3), dst); s.start(when);
+      };
+      if (AU.horn) play(); else (AU.hornReady || Promise.resolve()).then(play);
+    }
     function scheduleFx(t) { // effects for the remaining part of the timeline, starting at animation time t
       if (!AU.ctx || AU.ctx.state !== 'running') return;
       if (AU.session) { try { AU.session.disconnect(); } catch (e) {} }
@@ -470,7 +482,7 @@ void main(){
       at(T.card, x => swoosh(sg, x, .8, 500, 3000, .07));
       at(T.note, x => ping(sg, x + .2, 988, .06, 1.2, .5));
       const stopAt = T.bus + T.busDrive; // engine while it approaches, air brakes, then a short horn at the stop
-      at(T.bus, x => { engine(sg, x, T.busDrive, .24); hiss(sg, x + T.busDrive - .15, .55, .06); horn(sg, x + T.busDrive + .45, .05); });
+      at(T.bus, x => { engine(sg, x, T.busDrive, .24); hiss(sg, x + T.busDrive - .15, .55, .06); busHorn(sg, x + T.busDrive + .25, .5); });
       at(stopAt + .5, x => ping(sg, x, 1175, .05, 1.2, .6));
       [523.25, 587.33, 659.25, 783.99, 880, 1046.5, 1174.66].forEach((f, i) => at(T.steps + i * T.stepGap, x => {
         swoosh(sg, x, .6, 500, 2600, .05); ping(sg, x + .3, f, .07, 1.4, (i - 3) * .2); if (i === MI_RUTA) bell(sg, x + .5, 659.25, .1); }));

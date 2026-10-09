@@ -1,0 +1,7 @@
+bus-horn.wav
+  0.85 s excerpt (double beep, 6.85–7.70 s, mono 22.05 kHz, normalised, short fades) of
+  "WWS CityBusMANSG220horn.ogg" — horn of a MAN/Avtomontaža city bus (1991).
+  Author: Work With Sounds / Technical Museum of Slovenia.
+  Source: https://commons.wikimedia.org/wiki/File:WWS_CityBusMANSG220horn.ogg
+  License: Creative Commons Attribution 4.0 International (CC BY 4.0) — https://creativecommons.org/licenses/by/4.0/
+  Changes: trimmed, converted to WAV, normalised, fades added.

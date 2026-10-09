@@ -170,13 +170,13 @@ wake();
 // (slides and music) so it can be presented without internet.
 (()=>{
   if(!('serviceWorker' in navigator)||!window.caches)return;
-  const CACHE='mi-ruta-deck-v3';
+  const CACHE='mi-ruta-deck-v4';
   const toast=document.getElementById('toast');
   const say=(t,ms)=>{toast.textContent=t;toast.hidden=false;clearTimeout(say.h);if(ms)say.h=setTimeout(()=>toast.hidden=true,ms)};
   navigator.serviceWorker.register('sw.js').catch(()=>{});
   if(!new URLSearchParams(location.search).has('offline'))return;
   (async()=>{
-    const files=['./','index.html','slides.js','anim/cover.js','manifest.webmanifest','icons/icon-192.png','icons/icon-512.png','et_douloureux.ogg',
+    const files=['./','index.html','slides.js','anim/cover.js','assets/bus-horn.wav','manifest.webmanifest','icons/icon-192.png','icons/icon-512.png','et_douloureux.ogg',
       ...window.DECK.slides.map((_,i)=>window.DECK.src(i))];
     const cache=await caches.open(CACHE);let done=0,failed=0;
     say(`Guardando la presentación para usarla sin conexión… 0/${files.length}`);

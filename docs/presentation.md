@@ -36,7 +36,7 @@ La lámina 1 se anima con la misma técnica de la plantilla de presentaciones (1
 | 1,6 s | El título se arma con partículas doradas y recibe un destello |
 | 4 s | **"Caso práctico: Mi Ruta"** entra como un sello, con contornos y chispas, y queda con un brillo dorado |
 | 5–6,6 s | Frase, tarjeta del curso y nota |
-| 6,9–8,8 s | El bus llega por la calle desde el fondo (crece a medida que se acerca), frena con un leve cabeceo y polvo en las ruedas, suena la bocina y el letrero **"Mi Ruta"** se enciende como un LED; el cartel del paradero y el pin del mapa laten |
+| 6,9–8,8 s | El bus llega por la calle desde el fondo (crece a medida que se acerca), frena con un leve cabeceo y polvo en las ruedas, suena un pitido real de bus al detenerse y el letrero **"Mi Ruta"** se enciende como un LED; el cartel del paradero y el pin del mapa laten |
 | 9,6–12,6 s | Los 7 pasos entran en orden; el paso **3. Mi Ruta (SUT)** se resalta en dorado |
 | 13,2 s | Barra "En este CIPAS…", con "Trabajamos con un caso práctico: Mi Ruta" resaltado |
 | 14,4–17,4 s | Un reflector oscurece el resto e ilumina todos los elementos de Mi Ruta |
@@ -44,6 +44,10 @@ La lámina 1 se anima con la misma técnica de la plantilla de presentaciones (1
 Sonido: ambiente de ciudad (tráfico lejano, brisa y pájaros) y efectos sincronizados, hechos con Web Audio; respetan el botón **Audio** y el volumen. Con la preferencia del sistema "reducir movimiento" (en Windows: *Accesibilidad → Efectos visuales → Efectos de animación* desactivado) se muestra el cuadro final; **Reproducir** o `R` reproducen la animación cuando se pida.
 
 Código: `anim/cover.js`. Las capas se recortan en el navegador a partir de `assets/slide-01.webp` (no hay archivos de imagen adicionales); las coordenadas de cada bloque están en el objeto `R` y la línea de tiempo en `T`.
+
+### Créditos de audio
+
+El pitido del bus al detenerse es una grabación real: un fragmento de 0,85 s (doble pitido, recortado, normalizado y convertido a WAV) de [*WWS CityBusMANSG220horn.ogg*](https://commons.wikimedia.org/wiki/File:WWS_CityBusMANSG220horn.ogg), bocina de un bus urbano MAN/Avtomontaža de 1991, por **Work With Sounds / Technical Museum of Slovenia**, con licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Archivo: `assets/bus-horn.wav` (crédito también en `assets/CREDITS.txt`).
 
 ## Sin conexión
 

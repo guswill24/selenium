@@ -3,7 +3,7 @@
 // - Media (audio): served from cache when present, including byte-range requests.
 // - Everything else under /presentacion/: cache first, refreshed in the background.
 // The full deck is cached by index.html when opened with ?offline.
-const CACHE = 'mi-ruta-deck-v3';
+const CACHE = 'mi-ruta-deck-v4';
 const CORE = ['./', 'index.html', 'slides.js', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'et_douloureux.ogg'];
 const PAGE_TIMEOUT = 4000;
 const SCOPE = new URL('./', self.location).pathname;
