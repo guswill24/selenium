@@ -1,4 +1,4 @@
-import { X } from 'lucide-react';
+import { ExternalLink, Presentation, X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router';
 import { useAuth } from '../../hooks/useAuth.ts';
@@ -101,6 +101,23 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             </div>
           ))}
         </nav>
+
+        <div className="border-t border-slate-800 px-3 py-3">
+          {/* Static deck served from /presentacion/, outside the SPA router. */}
+          <a
+            href="/presentacion/"
+            target="_blank"
+            rel="noopener"
+            onClick={() => onClose(false)}
+            data-testid="nav-presentation"
+            className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
+          >
+            <Presentation className="h-5 w-5 shrink-0" aria-hidden="true" />
+            <span>Presentación</span>
+            <ExternalLink className="ml-auto h-4 w-4 shrink-0" aria-hidden="true" />
+            <span className="sr-only">(se abre en una pestaña nueva)</span>
+          </a>
+        </div>
 
         <p className="border-t border-slate-800 px-5 py-4 text-xs text-slate-400">
           Entorno educativo. Todos los datos son ficticios.

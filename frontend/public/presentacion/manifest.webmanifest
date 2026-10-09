@@ -1,0 +1,16 @@
+{
+  "name": "Mi Ruta · Presentación CIPAS",
+  "short_name": "Mi Ruta CIPAS",
+  "description": "CIPAS Calidad de Software: automatización de pruebas con Selenium IDE. Caso práctico: Mi Ruta.",
+  "lang": "es",
+  "start_url": "/presentacion/",
+  "scope": "/presentacion/",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#0d1730",
+  "theme_color": "#0d1730",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -174,6 +174,15 @@ export function LoginPage() {
         <Link to="/lab" className="inline-flex min-h-6 items-center font-semibold text-white underline underline-offset-2" data-testid="link-login-lab">
           Laboratorio de escenarios
         </Link>
+        <a
+          href="/presentacion/"
+          target="_blank"
+          rel="noopener"
+          className="inline-flex min-h-6 items-center font-semibold text-white underline underline-offset-2"
+          data-testid="link-login-presentation"
+        >
+          Presentación<span className="sr-only"> (se abre en una pestaña nueva)</span>
+        </a>
       </div>
 
       <section

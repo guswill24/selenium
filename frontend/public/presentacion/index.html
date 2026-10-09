@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!-- Copyright (c) 2026 guswillsan@hotmail.com. All rights reserved. -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="guswillsan@hotmail.com">
+<meta name="copyright" content="© 2026 guswillsan@hotmail.com. All rights reserved.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mi Ruta · Selenium IDE – CIPAS Calidad de Software</title>
+<meta name="description" content="CIPAS Calidad de Software (202016903, UNAD): automatización de pruebas con Selenium IDE. Caso práctico: Mi Ruta, del requisito a la evidencia de prueba.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:title" content="CIPAS – Calidad de Software · Caso práctico: Mi Ruta">
+<meta property="og:description" content="Automatización de pruebas con Selenium IDE: del requisito a la evidencia de prueba.">
+<meta property="og:image" content="assets/slide-01.webp">
+<meta name="theme-color" content="#0d1730">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+:root{--ink:#14254f;--gold:#c9a24b;--paper:#f6f2ea;--night:#0d1730}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--paper);font-family:Garamond,"Cormorant Garamond","Times New Roman",serif;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+.stage{position:relative;width:min(100vw,calc(100dvh*16/9));aspect-ratio:16/9;max-width:100%;max-height:100dvh}
+.slide{width:100%;height:100%;display:block;object-fit:contain;background:#fff;transition:opacity .25s ease;user-select:none;-webkit-user-drag:none}
+.slide.out{opacity:0}
+.slide[hidden]{display:none}
+canvas.slide{background:#fff}
+.bar{position:absolute;left:50%;bottom:clamp(8px,2.5vw,24px);transform:translateX(-50%);display:flex;gap:6px;align-items:center;
+  background:rgba(13,23,48,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:6px;border-radius:999px;
+  border:1px solid rgba(201,162,75,.45);transition:opacity .4s ease;font-size:clamp(14px,1.5vw,17px);max-width:calc(100% - 16px)}
+.bar.hide{opacity:0;pointer-events:none}
+.bar button,.bar a{font:inherit;font-weight:600;color:var(--paper);background:transparent;border:0;border-radius:999px;
+  padding:.45em 1em;cursor:pointer;white-space:nowrap;text-decoration:none;min-height:24px}
+.bar button:hover,.bar a:hover{background:rgba(246,242,234,.12)}
+.bar button:focus-visible,.bar a:focus-visible,.bar input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.bar button:disabled{opacity:.35;cursor:default;background:transparent}
+.bar button.off{opacity:.6;text-decoration:line-through}
+.bar .t{min-width:4.2em;text-align:center;font-variant-numeric:tabular-nums;opacity:.85;padding:0 .3em}
+.bar .vol{width:5.5em;accent-color:var(--gold);cursor:pointer;margin:0 .2em}
+.bar .home{color:var(--gold)}
+@media (max-width:900px){.bar .vol,.bar .lbl{display:none}}
+@media (max-width:560px){.bar{gap:2px}.bar button,.bar a{padding:.45em .6em}}
+.toast{position:fixed;left:16px;bottom:16px;z-index:2;max-width:calc(100% - 32px);padding:.6em 1em;border-radius:12px;
+  background:rgba(13,23,48,.9);border:1px solid rgba(201,162,75,.45);color:var(--paper);font:600 15px/1.35 Garamond,"Times New Roman",serif}
+.toast[hidden]{display:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.slide,.bar{transition:none}}
+</style>
+</head>
+<body>
+<main class="stage" id="stage" aria-roledescription="presentación" aria-label="Presentación CIPAS – Mi Ruta">
+  <img class="slide" id="slide" alt="" data-testid="presentation-slide" draggable="false">
+  <canvas class="slide" id="anim" width="1920" height="1080" role="img" hidden data-testid="presentation-animation"></canvas>
+  <nav class="bar" id="bar" aria-label="Controles de la presentación">
+    <a class="home" href="/" data-testid="presentation-home" aria-label="Volver a Mi Ruta">⌂ <span class="lbl">Mi Ruta</span></a>
+    <button id="bPrev" type="button" aria-label="Diapositiva anterior">‹ <span class="lbl">Anterior</span></button>
+    <button id="bPlay" type="button" hidden aria-label="Reproducir la animación desde el inicio">↻ <span class="lbl">Reproducir</span></button>
+    <span class="t" id="count" aria-hidden="true"></span>
+    <button id="bMus" type="button" aria-pressed="true" aria-label="Activar o silenciar la música">♪ <span class="lbl">Audio</span></button>
+    <input class="vol" id="vol" type="range" min="0" max="1" step="0.05" aria-label="Volumen de la música">
+    <button id="bFs" type="button" aria-label="Pantalla completa">⛶ <span class="lbl">Pantalla completa</span></button>
+    <button id="bNext" type="button" aria-label="Diapositiva siguiente"><span class="lbl">Siguiente</span> ›</button>
+  </nav>
+  <p class="sr" id="live" aria-live="polite"></p>
+</main>
+<audio id="bgm" src="et_douloureux.ogg" loop preload="auto"></audio>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="slides.js"></script>
+<script src="anim/cover.js"></script>
+<script>
+// Single-page deck: only the image changes, so fullscreen and the background music persist across slides.
+const {slides,src}=window.DECK,N=slides.length;
+const $=id=>document.getElementById(id);
+const img=$('slide'),cvs=$('anim'),bar=$('bar'),count=$('count'),live=$('live'),bgm=$('bgm'),bMus=$('bMus'),vol=$('vol'),bPlay=$('bPlay');
+
+// Animated slides (slides.js "anim"): a canvas replaces the image while the slide is shown.
+// With reduced motion the canvas shows the final frame; Reproducir (or R) still plays the animation on request.
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const anims={};let active=null;
+const mountAnim=(name,i)=>anims[name]||(anims[name]=window.DECK_ANIMS[name].mount(cvs,src(i),{reduced}));
+function stopAnim(){if(active){active.stop();active=null}}
+
+// Navigation: #N in the URL (1-based), fade out, swap, fade in once the image (or the animation) is ready
+let cur=-1,navTok=0;
+function preload(i){if(i>=0&&i<N){const p=new Image();p.src=src(i)}}
+function showImage(i,tok){cvs.hidden=true;img.hidden=false;bPlay.hidden=true;img.src=src(i);img.alt=slides[i].alt;
+  img.decode().catch(()=>{}).finally(()=>{if(tok===navTok)img.classList.remove('out')})}
+function show(i,announce){
+  i=Math.max(0,Math.min(N-1,i));if(i===cur)return;
+  const first=cur<0;cur=i;history.replaceState(null,'','#'+(i+1));
+  const tok=++navTok,s=slides[i],swap=()=>{if(tok!==navTok)return;stopAnim();
+    if(!s.anim||!window.DECK_ANIMS?.[s.anim]){showImage(i,tok);return}
+    mountAnim(s.anim,i).then(a=>{if(tok!==navTok)return;
+      img.hidden=true;cvs.hidden=false;cvs.setAttribute('aria-label',s.alt);bPlay.hidden=false;
+      active=a;a.setAudio(pref);if(navigator.userActivation?.hasBeenActive)a.unlockAudio();a.restart();
+      cvs.classList.remove('out')}).catch(()=>showImage(i,tok))};
+  if(first)swap();else{img.classList.add('out');cvs.classList.add('out');setTimeout(swap,250)}
+  count.textContent=`${i+1} / ${N}`;
+  $('bPrev').disabled=i===0;$('bNext').disabled=i===N-1;
+  document.title=`${slides[i].title} · ${window.DECK.title}`;
+  if(announce)live.textContent=`Diapositiva ${i+1} de ${N}: ${slides[i].title}`;
+  preload(i+1);preload(i-1);
+}
+const go=d=>show(cur+d,true);
+const fromHash=()=>{const n=parseInt(location.hash.slice(1),10);return n>=1&&n<=N?n-1:0};
+show(fromHash(),false);
+addEventListener('hashchange',()=>show(fromHash(),true));
+$('bPrev').onclick=()=>go(-1);$('bNext').onclick=()=>go(1);
+const replay=()=>{if(active){active.unlockAudio();active.restart(true)}};
+bPlay.onclick=replay;
+
+// Keyboard and wireless clickers: → ↓ PageDown Space advance; ← ↑ PageUp go back; Home/End jump; F toggles fullscreen;
+// R replays the animation of an animated slide
+addEventListener('keydown',e=>{
+  if(e.repeat||e.altKey||e.ctrlKey||e.metaKey||e.target.closest('input'))return;
+  const k=e.key;
+  if(['PageDown','ArrowRight','ArrowDown',' '].includes(k)){if(k===' '&&e.target.closest('button,a'))return;e.preventDefault();go(1)}
+  else if(['PageUp','ArrowLeft','ArrowUp'].includes(k)){e.preventDefault();go(-1)}
+  else if(k==='Home'){e.preventDefault();show(0,true)}
+  else if(k==='End'){e.preventDefault();show(N-1,true)}
+  else if(k==='f'||k==='F'){toggleFs()}
+  else if(k==='r'||k==='R'){replay()}
+});
+
+// Touch: swipe left advances, swipe right goes back (ignored on the control bar)
+let x0=null,y0=0,t0=0;
+addEventListener('touchstart',e=>{const p=e.touches[0];
+  x0=(e.touches.length===1&&!e.target.closest('.bar'))?p.clientX:null;y0=p.clientY;t0=Date.now()},{passive:true});
+addEventListener('touchend',e=>{if(x0===null)return;const p=e.changedTouches[0],dx=p.clientX-x0,dy=p.clientY-y0;x0=null;
+  if(Date.now()-t0<700&&Math.abs(dx)>50&&Math.abs(dx)>1.5*Math.abs(dy))go(dx<0?1:-1)},{passive:true});
+
+// Fullscreen on the whole document
+function toggleFs(){const r=document.documentElement;
+  if(document.fullscreenElement||document.webkitFullscreenElement)(document.exitFullscreen||document.webkitExitFullscreen).call(document);
+  else(r.requestFullscreen||r.webkitRequestFullscreen)?.call(r)}
+$('bFs').onclick=toggleFs;
+document.addEventListener('fullscreenchange',()=>$('bFs').setAttribute('aria-pressed',String(!!document.fullscreenElement)));
+
+// Background music: on/off and volume persist in localStorage (audioPrefs); browsers require a first click or key
+const PREF='audioPrefs',BGM_BASE=.15;
+const norm=p=>{const v=parseFloat(p&&p.vol);return{on:!(p&&p.on===false),vol:isFinite(v)?Math.min(1,Math.max(0,v)):1}};
+let pref=norm(null);
+try{pref=norm(JSON.parse(localStorage.getItem(PREF)))}catch(e){}
+function applyAudio(){bgm.volume=BGM_BASE*pref.vol;vol.value=pref.vol;
+  bMus.setAttribute('aria-pressed',String(pref.on));bMus.classList.toggle('off',!pref.on);
+  if(pref.on)play();else bgm.pause();
+  if(active)active.setAudio(pref)}
+function savePref(){try{localStorage.setItem(PREF,JSON.stringify(pref))}catch(e){}}
+const play=()=>{if(pref.on&&bgm.paused)bgm.play().catch(()=>{})};
+bMus.onclick=()=>{pref.on=!pref.on;savePref();applyAudio()};
+vol.oninput=()=>{pref.vol=parseFloat(vol.value);if(pref.vol>0)pref.on=true;savePref();applyAudio()};
+applyAudio();
+// Browsers allow sound only after a click or key: that first gesture starts the music and the animation's sound
+['pointerdown','keydown'].forEach(ev=>addEventListener(ev,()=>{play();if(active)active.unlockAudio()}));
+
+// Control bar hides after 3 s without pointer movement; keyboard focus or touch brings it back
+let hideT;
+function wake(){bar.classList.remove('hide');clearTimeout(hideT);
+  hideT=setTimeout(()=>{if(!bar.matches(':focus-within,:hover'))bar.classList.add('hide')},3000)}
+['pointermove','pointerdown','keydown','touchstart'].forEach(ev=>addEventListener(ev,wake,{passive:true}));
+bar.addEventListener('focusin',wake);
+wake();
+</script>
+<script>
+// Offline: the service worker caches what is visited. Opening index.html?offline downloads the whole deck
+// (slides and music) so it can be presented without internet.
+(()=>{
+  if(!('serviceWorker' in navigator)||!window.caches)return;
+  const CACHE='mi-ruta-deck-v3';
+  const toast=document.getElementById('toast');
+  const say=(t,ms)=>{toast.textContent=t;toast.hidden=false;clearTimeout(say.h);if(ms)say.h=setTimeout(()=>toast.hidden=true,ms)};
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+  if(!new URLSearchParams(location.search).has('offline'))return;
+  (async()=>{
+    const files=['./','index.html','slides.js','anim/cover.js','manifest.webmanifest','icons/icon-192.png','icons/icon-512.png','et_douloureux.ogg',
+      ...window.DECK.slides.map((_,i)=>window.DECK.src(i))];
+    const cache=await caches.open(CACHE);let done=0,failed=0;
+    say(`Guardando la presentación para usarla sin conexión… 0/${files.length}`);
+    for(const f of files){
+      try{const res=await fetch(f,{cache:'reload'});if(!res.ok)throw new Error(res.status);await cache.put(f,res)}catch(e){failed++}
+      say(`Guardando la presentación para usarla sin conexión… ${++done}/${files.length}`);
+    }
+    say(failed?`No se pudieron guardar ${failed} archivos. Revisa la conexión y vuelve a abrir esta página.`
+              :'Listo: la presentación funciona sin conexión en este navegador.',failed?0:8000);
+  })();
+})();
+</script>
+</body>
+</html>

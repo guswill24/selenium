@@ -35,6 +35,8 @@ Verificado automáticamente en esta fase (todas las pantallas, como pasajero, ad
 | `admin-route-create`, `admin-route-edit` | `/admin` (botón crear; formulario de edición) |
 | `server-error`, `service-unavailable`, `loading-indicator` | Cualquier página, según el escenario activo |
 
+Enlaces a la presentación de la sesión (se abren en una pestaña nueva, fuera del sistema bajo prueba): `nav-presentation` en el menú lateral y `link-login-presentation` en `/login`. Ver [presentation.md](presentation.md).
+
 ## Matriz
 
 Atributos ISO/IEC 25010: **AF** adecuación funcional · **ED** eficiencia del desempeño · **CO** compatibilidad · **CI** capacidad de interacción / usabilidad · **FI** fiabilidad · **SE** seguridad · **MA** mantenibilidad · **PO** portabilidad.

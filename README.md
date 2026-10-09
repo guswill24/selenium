@@ -3,7 +3,7 @@
 Sistema bajo prueba (SUT) educativo para el curso **Calidad de Software – 202016903 (UNAD)**.
 Simula una aplicación de transporte público urbano para practicar pruebas funcionales y no funcionales con Selenium IDE.
 
-> Estado: **Fase 19 – Documentación**. Pendiente: preparación del despliegue en Vercel (Fase 20, ver [docs/deployment-vercel.md](docs/deployment-vercel.md)).
+> Estado: **Fase 20 – Preparación Vercel**. El proyecto está listo para desplegarse en Vercel como una sola aplicación (ver [docs/deployment-vercel.md](docs/deployment-vercel.md)).
 
 ## Qué es y para qué sirve
 
@@ -54,11 +54,12 @@ Para cambiar el comportamiento del sistema (respuesta lenta, error del servidor,
 | `npm run check` | lint + typecheck + validate:data + test + build |
 
 En desarrollo, el frontend consume la API mediante rutas relativas (`/api/...`) a través del proxy de Vite.
-En producción (Vercel), frontend y API compartirán el mismo origen.
+En producción (Vercel), frontend y API comparten el mismo origen: la API se ejecuta como función (`api/index.ts`). Variables de entorno opcionales: [.env.example](.env.example).
 
 ## Estructura
 
 ```
+api/        Punto de entrada de la API como función de Vercel
 backend/    API Express + TypeScript (pruebas con Vitest)
 frontend/   React + TypeScript + Vite + Tailwind CSS
 data/       Fixtures JSON de solo lectura
@@ -80,7 +81,9 @@ Detalle de capas y decisiones: [docs/architecture.md](docs/architecture.md).
 | Reproducir errores controlados | [errors.md](docs/errors.md) |
 | Consultar la API | [api.md](docs/api.md) |
 | Conocer los datos simulados | [data.md](docs/data.md) |
-| Desplegar en Vercel (pendiente – Fase 20) | [deployment-vercel.md](docs/deployment-vercel.md) |
+| Desplegar en Vercel | [deployment-vercel.md](docs/deployment-vercel.md) |
+| Publicar el código en GitHub | [git-github.md](docs/git-github.md) |
+| Proyectar la presentación de la sesión CIPAS | [presentation.md](docs/presentation.md) |
 | Accesibilidad y diseño adaptable | [accessibility.md](docs/accessibility.md), [responsive.md](docs/responsive.md) |
 | Módulos específicos | [map.md](docs/map.md), [realtime.md](docs/realtime.md), [alerts.md](docs/alerts.md), [history.md](docs/history.md), [admin.md](docs/admin.md) |
 
@@ -94,4 +97,4 @@ Detalle de capas y decisiones: [docs/architecture.md](docs/architecture.md).
 | Hallazgo de seguridad intencional | El inicio de sesión distingue usuario inexistente de contraseña incorrecta ([api.md](docs/api.md)) |
 | Alcance de Selenium IDE | Carga, rendimiento preciso, accesibilidad completa y calidad visual requieren herramientas complementarias ([testability-matrix.md](docs/testability-matrix.md)) |
 | Escenarios | Aplican la misma falla a todas las solicitudes; no simulan fallas parciales o intermitentes ([errors.md](docs/errors.md)) |
-| Despliegue | La configuración de Vercel está pendiente (Fase 20) |
+| Despliegue serverless | Sin estado compartido en el servidor; conviene definir `AUTH_SECRET` en Vercel ([deployment-vercel.md](docs/deployment-vercel.md#estado-del-servidor-y-limitaciones-en-serverless)) |

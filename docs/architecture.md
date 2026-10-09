@@ -28,7 +28,7 @@ Datos     Archivos JSON de solo lectura                  data/
 ```
 
 - En desarrollo, el servidor de Vite (puerto 5173) reenvía `/api` a la API (puerto 3001). Ver `frontend/vite.config.ts`.
-- En producción, frontend y API compartirán el mismo origen (ver [deployment-vercel.md](deployment-vercel.md)).
+- En producción, frontend y API comparten el mismo origen; la API se ejecuta como función de Vercel (`api/index.ts`, ver [deployment-vercel.md](deployment-vercel.md)).
 - No hay base de datos ni servicios externos.
 
 ## Frontend (`frontend/src/`)
