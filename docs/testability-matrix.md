@@ -66,7 +66,8 @@ Automatización: **Sí** = verificable con Selenium IDE · **Parcial** = Seleniu
 | Crear ruta | `admin-route-create`, `btn-save-route` | `admin-route-saved`, `admin-route-row-<id>` (`data-origin="new"`) | Ruta agregada (demostración) | AF | Sí |
 | Modificar ruta | `admin-route-edit-<id>`, `admin-route-edit` | `admin-route-saved`, `data-origin="edited"` | Cambios reflejados (demostración) | AF | Sí |
 | Validación de datos | formularios con `noValidate` | `error-<campo>`, detalle 400 por campo | Un mensaje por campo | AF, FI | Sí |
-| Errores controlados | escenarios `SERVER_ERROR`, `SERVICE_UNAVAILABLE`, `INVALID_DATA`, `UNAUTHORIZED` | `server-error`, `service-unavailable`, `invalid-data`, `unauthorized`; `error-details-code` | Mensaje amigable y detalle técnico | FI | Sí |
+| Errores controlados | escenarios `SERVER_ERROR`, `SERVICE_UNAVAILABLE`, `INVALID_DATA`, `UNAUTHORIZED`; URL inexistente | `server-error`, `service-unavailable`, `invalid-data`, `unauthorized`, `dashboard-alerts-error`, `page-not-found`; `error-details-code`, `login-error-details-code`, `profile-error-details-code` | Mensaje amigable y detalle técnico (ver [errors.md](errors.md)) | FI | Sí |
+| Falla inesperada de la interfaz | — (no se provoca desde el laboratorio) | `app-error` | Mensaje amigable sin traza de pila | FI, CI | Complementaria |
 | Tiempo de respuesta | escenario `SLOW_RESPONSE` | `loading-indicator`, `data-state="loading"` | Indicador visible durante la espera | ED, CI | Parcial (umbral con esperas; medición precisa requiere herramientas de rendimiento) |
 | Disponibilidad | escenario `SERVICE_UNAVAILABLE`, `/api/health` | `api-health` (`data-state`), `monitoring-api-health` | Estado no disponible informado | FI | Parcial |
 | Diseño adaptable | tamaño de ventana | menú `btn-open-menu`, `sidebar` (`data-state`) | Sin desplazamiento horizontal | PO, CI | Parcial (tamaño y visibilidad; la calidad visual requiere revisión humana) |

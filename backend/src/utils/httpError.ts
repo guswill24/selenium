@@ -1,6 +1,7 @@
 export type ErrorCode =
   | 'INVALID_ID'
   | 'INVALID_JSON'
+  | 'PAYLOAD_TOO_LARGE'
   | 'VALIDATION_ERROR'
   | 'USER_NOT_FOUND'
   | 'WRONG_PASSWORD'

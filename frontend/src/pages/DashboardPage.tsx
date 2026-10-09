@@ -63,6 +63,18 @@ export function DashboardPage() {
               </Link>
             </div>
           )}
+          {alertsQuery.status === 'error' && (
+            // Secondary data: a short message instead of a full error block; the code stays observable.
+            <p
+              className="text-red-800"
+              role="alert"
+              data-testid="dashboard-alerts-error"
+              data-error-status={alertsQuery.error.status}
+              data-error-code={alertsQuery.error.code}
+            >
+              No fue posible consultar las alertas activas.
+            </p>
+          )}
         </div>
       </Card>
 

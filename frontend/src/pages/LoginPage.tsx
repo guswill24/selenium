@@ -2,6 +2,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import { useRef, useState, type FormEvent } from 'react';
 import { Link } from 'react-router';
 import { ScenarioBadge } from '../components/layout/ScenarioBadge.tsx';
+import { ErrorDetails } from '../components/feedback/ErrorDetails.tsx';
 import { Notice } from '../components/feedback/Notice.tsx';
 import { TextField } from '../components/form/TextField.tsx';
 import { Button } from '../components/ui/Button.tsx';
@@ -16,8 +17,10 @@ interface FieldErrors {
 }
 
 interface LoginFailure {
+  status: number;
   code: string;
   message: string;
+  requestId?: string | undefined;
 }
 
 const REQUIRED_MESSAGES = {
@@ -40,19 +43,20 @@ function validate(username: string, password: string): FieldErrors {
 
 function toFailure(error: unknown): LoginFailure {
   if (!(error instanceof ApiError)) {
-    return { code: 'UNKNOWN_ERROR', message: 'Ocurrió un error inesperado. Intenta nuevamente.' };
+    return { status: 0, code: 'UNKNOWN_ERROR', message: 'Ocurrió un error inesperado. Intenta nuevamente.' };
   }
+  const technical = { status: error.status, code: error.code, requestId: error.requestId };
   if (error.status === 0) {
-    return { code: error.code, message: 'No fue posible conectar con el servidor. Verifica tu conexión e intenta nuevamente.' };
+    return { ...technical, message: 'No fue posible conectar con el servidor. Verifica tu conexión e intenta nuevamente.' };
   }
   if (error.status === 503) {
-    return { code: error.code, message: 'El servicio no está disponible temporalmente. Intenta nuevamente en unos minutos.' };
+    return { ...technical, message: 'El servicio no está disponible temporalmente. Intenta nuevamente en unos minutos.' };
   }
   if (error.status >= 500) {
-    // Never show internal details to the user; the code stays available in data-error-code.
-    return { code: error.code, message: 'Ocurrió un problema en el servidor. Intenta nuevamente más tarde.' };
+    // Never show internal details to the user; status and code stay available in the technical details.
+    return { ...technical, message: 'Ocurrió un problema en el servidor. Intenta nuevamente más tarde.' };
   }
-  return { code: error.code, message: error.message };
+  return { ...technical, message: error.message };
 }
 
 export function LoginPage() {
@@ -151,10 +155,11 @@ export function LoginPage() {
           />
 
           {failure && (
-            <div data-testid="login-error" data-error-code={failure.code}>
+            <div className="space-y-2" data-testid="login-error" data-error-status={failure.status} data-error-code={failure.code}>
               <Notice tone="error" title="No fue posible iniciar sesión" testId="login-error-message">
                 <span data-testid="login-error-text">{failure.message}</span>
               </Notice>
+              <ErrorDetails status={failure.status} code={failure.code} requestId={failure.requestId} testId="login-error-details" />
             </div>
           )}
 

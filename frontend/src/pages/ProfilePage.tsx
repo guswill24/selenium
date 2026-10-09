@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { ErrorDetails } from '../components/feedback/ErrorDetails.tsx';
 import { Notice } from '../components/feedback/Notice.tsx';
 import { TextField } from '../components/form/TextField.tsx';
 import { Badge } from '../components/ui/Badge.tsx';
@@ -10,7 +11,7 @@ import { ApiError } from '../services/apiClient.ts';
 import { roleLabels, type ProfileUpdate, type User } from '../types/auth.ts';
 
 type FieldErrors = Partial<Record<keyof ProfileUpdate, string>>;
-type SaveResult = { tone: 'success'; message: string } | { tone: 'error'; message: string } | null;
+type SaveResult = { tone: 'success'; message: string } | { tone: 'error'; message: string; error: ApiError | null } | null;
 
 function toForm(user: User): ProfileUpdate {
   return { fullName: user.fullName, email: user.email, phone: user.phone };
@@ -50,7 +51,11 @@ export function ProfilePage() {
       if (error instanceof ApiError && error.code === 'VALIDATION_ERROR') {
         setErrors(Object.fromEntries(error.details.map((detail) => [detail.field, detail.message])));
       } else {
-        setResult({ tone: 'error', message: 'No fue posible guardar los cambios. Intenta nuevamente.' });
+        setResult({
+          tone: 'error',
+          message: 'No fue posible guardar los cambios. Intenta nuevamente.',
+          error: error instanceof ApiError ? error : null,
+        });
       }
     } finally {
       setIsSaving(false);
@@ -135,8 +140,19 @@ export function ProfilePage() {
             />
           </div>
 
-          {result && (
-            <Notice tone={result.tone} title={result.message} testId={result.tone === 'success' ? 'profile-success' : 'profile-error'} />
+          {result?.tone === 'success' && <Notice tone="success" title={result.message} testId="profile-success" />}
+          {result?.tone === 'error' && (
+            <div className="space-y-2">
+              <Notice tone="error" title={result.message} testId="profile-error" />
+              {result.error && (
+                <ErrorDetails
+                  status={result.error.status}
+                  code={result.error.code}
+                  requestId={result.error.requestId}
+                  testId="profile-error-details"
+                />
+              )}
+            </div>
           )}
 
           <p className="text-xs text-slate-600">

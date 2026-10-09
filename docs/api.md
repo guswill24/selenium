@@ -169,10 +169,13 @@ Todas requieren sesión (401 sin ella) y rol `ADMIN` (403 para pasajeros). **Val
 
 ## Errores controlados
 
+Cómo se reproducen y qué muestra la interfaz: [errors.md](errors.md).
+
 | Situación | Ejemplo | Estado | `code` |
 |---|---|---|---|
 | Identificador con formato inválido | `GET /api/routes/XYZ` | 400 | `INVALID_ID` |
 | Cuerpo JSON mal formado | `POST` con `{ invalid` | 400 | `INVALID_JSON` |
+| Cuerpo mayor a 100 KB | `POST /api/auth/login` con 200 KB | 413 | `PAYLOAD_TOO_LARGE` |
 | Campos obligatorios o con formato inválido | login sin usuario | 400 | `VALIDATION_ERROR` (incluye `details` por campo) |
 | Usuario inexistente | `nadie.demo` | 401 | `USER_NOT_FOUND` |
 | Contraseña incorrecta | `pasajero.demo` + clave errada | 401 | `WRONG_PASSWORD` |

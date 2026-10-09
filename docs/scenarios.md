@@ -66,7 +66,7 @@ Excepciones que nunca se ven afectadas: `/api/scenario` (para poder volver siemp
 | Colecciones vacías | `no-results`, `buses-empty`, `history-empty`… |
 | Detalle técnico de cualquier error | `error-details` → `error-details-status`, `error-details-code`, `error-details-request-id` |
 
-Los mensajes para el usuario son amigables; el código HTTP y el código de error quedan disponibles para el análisis en **Detalles técnicos**.
+Los mensajes para el usuario son amigables; el código HTTP y el código de error quedan disponibles para el análisis en **Detalles técnicos**. Detalle por código HTTP en [errors.md](errors.md).
 
 ## Nota para el docente: `INCONSISTENT_DATA`
 
@@ -76,9 +76,17 @@ Este escenario **no pasa** la validación de integridad a propósito. Contiene t
 2. BUS103 tiene un retraso negativo: su ETA en Tiempo real es **negativa** (−3 minutos en el minuto 0).
 3. Una alerta de retraso de R22 está activa, pero la ruta y sus buses no reportan retraso.
 
-## Agregar un escenario
+## Cómo agregar un nuevo escenario
 
-1. Agrega el identificador y su definición en `backend/src/scenario/scenarios.ts`.
-2. Define su efecto en **un** lugar: una falla en `forcedFailure` (`middleware/scenario.ts`) o un conjunto de datos en `scenario/datasets.ts` (se valida al iniciar la API, salvo que se indique lo contrario).
-3. Agrega el identificador y su etiqueta en `frontend/src/types/scenario.ts`.
+1. Agrega el identificador a `SCENARIO_IDS` y su definición (etiqueta, descripción, código HTTP) a `SCENARIOS` en `backend/src/scenario/scenarios.ts`. Si afecta la disponibilidad, la consistencia o la sesión, refléjalo en `toConfig` (panel **Configuración recibida por el servidor**).
+2. Define su efecto en **un** lugar:
+
+   | Tipo de efecto | Dónde |
+   |---|---|
+   | Falla HTTP forzada | `forcedFailure` en `backend/src/middleware/scenario.ts` |
+   | Conjunto de datos alternativo | `builders` en `backend/src/scenario/datasets.ts` (se valida al iniciar la API, salvo que se indique `validate: false`) |
+   | Comportamiento de búsqueda | Consulta del escenario actual con `backend/src/scenario/context.ts`, como hace `NO_RESULTS` con `isNoResults()` |
+
+3. Agrega el identificador a `SCENARIO_IDS` y su etiqueta a `scenarioLabels` en `frontend/src/types/scenario.ts`. El selector de `/lab`, el parámetro `?scenario=` y la insignia usan esta lista; las tarjetas del catálogo se obtienen de la API.
 4. Agrega pruebas en `backend/src/scenarios.test.ts` y ejecuta `npm run check`.
+5. Documenta el escenario en la tabla [Escenarios](#escenarios) y, si produce un error nuevo, en [errors.md](errors.md).

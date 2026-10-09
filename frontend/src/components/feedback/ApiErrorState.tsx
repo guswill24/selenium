@@ -2,6 +2,7 @@ import { RotateCw } from 'lucide-react';
 import type { ApiError } from '../../services/apiClient.ts';
 import { scopedTestId } from '../../utils/testIds.ts';
 import { Button } from '../ui/Button.tsx';
+import { ErrorDetails } from './ErrorDetails.tsx';
 import { ErrorState } from './ErrorState.tsx';
 
 interface ErrorPresentation {
@@ -74,20 +75,7 @@ export function ApiErrorState({ error, onRetry, scope }: ApiErrorStateProps) {
           )
         }
       />
-      {/* Technical details stay out of the main message but remain available for analysis. */}
-      <details className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs text-slate-700" data-testid={id('error-details')}>
-        <summary className="cursor-pointer py-1 font-medium">Detalles técnicos</summary>
-        <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1">
-          <dt>Estado HTTP</dt>
-          <dd data-testid={id('error-details-status')}>{error.status || 'Sin respuesta'}</dd>
-          <dt>Código</dt>
-          <dd data-testid={id('error-details-code')}>{error.code}</dd>
-          <dt>Solicitud</dt>
-          <dd className="break-all" data-testid={id('error-details-request-id')}>
-            {error.requestId ?? 'No disponible'}
-          </dd>
-        </dl>
-      </details>
+      <ErrorDetails status={error.status} code={error.code} requestId={error.requestId} testId={id('error-details')} />
     </div>
   );
 }

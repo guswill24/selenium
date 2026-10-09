@@ -5,6 +5,7 @@ import { AppLayout } from '../layouts/AppLayout.tsx';
 import { AuthLayout } from '../layouts/AuthLayout.tsx';
 import { AdminPage } from '../pages/AdminPage.tsx';
 import { AlertsPage } from '../pages/AlertsPage.tsx';
+import { AppErrorPage } from '../pages/AppErrorPage.tsx';
 import { DashboardPage } from '../pages/DashboardPage.tsx';
 import { HistoryPage } from '../pages/HistoryPage.tsx';
 import { LabPage } from '../pages/LabPage.tsx';
@@ -54,30 +55,36 @@ const moduleRoutes: RouteObject[] = navigationItems.filter(isProtectedModule).ma
  */
 export function createAppRouter() {
   return createBrowserRouter([
-    { index: true, element: <Navigate to="/dashboard" replace /> },
     {
-      element: (
-        <RedirectIfAuthenticated>
-          <AuthLayout />
-        </RedirectIfAuthenticated>
-      ),
-      children: [{ path: 'login', element: <LoginPage /> }],
+      // Pathless root: its error boundary catches unexpected rendering failures of every page.
+      errorElement: <AppErrorPage />,
+      children: [
+        { index: true, element: <Navigate to="/dashboard" replace /> },
+        {
+          element: (
+            <RedirectIfAuthenticated>
+              <AuthLayout />
+            </RedirectIfAuthenticated>
+          ),
+          children: [{ path: 'login', element: <LoginPage /> }],
+        },
+        {
+          // Public on purpose: a scenario may break login, and the way back to NORMAL must stay reachable.
+          element: <AppLayout />,
+          handle: homeHandle,
+          children: [{ path: 'lab', element: <LabPage />, handle: { crumb: getNavigationItem('lab').label } satisfies RouteHandle }],
+        },
+        {
+          element: (
+            <RequireAuth>
+              <AppLayout />
+            </RequireAuth>
+          ),
+          handle: homeHandle,
+          children: [{ path: 'dashboard', element: <DashboardPage /> }, ...moduleRoutes],
+        },
+        { path: '*', element: <NotFoundPage /> },
+      ],
     },
-    {
-      // Public on purpose: a scenario may break login, and the way back to NORMAL must stay reachable.
-      element: <AppLayout />,
-      handle: homeHandle,
-      children: [{ path: 'lab', element: <LabPage />, handle: { crumb: getNavigationItem('lab').label } satisfies RouteHandle }],
-    },
-    {
-      element: (
-        <RequireAuth>
-          <AppLayout />
-        </RequireAuth>
-      ),
-      handle: homeHandle,
-      children: [{ path: 'dashboard', element: <DashboardPage /> }, ...moduleRoutes],
-    },
-    { path: '*', element: <NotFoundPage /> },
   ]);
 }

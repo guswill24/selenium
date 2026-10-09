@@ -5,13 +5,21 @@ export function endpointNotFound(req: Request, _res: Response, next: NextFunctio
   next(new HttpError(404, 'ENDPOINT_NOT_FOUND', `El endpoint ${req.method} ${req.originalUrl} no existe.`));
 }
 
-function isJsonSyntaxError(error: unknown): boolean {
-  return error instanceof SyntaxError && 'type' in error && error.type === 'entity.parse.failed';
+/** Client errors raised by the JSON body parser (malformed JSON, body too large, bad charset…). */
+function bodyParserErrorType(error: unknown): string | null {
+  if (!(error instanceof Error) || !('type' in error) || typeof error.type !== 'string') return null;
+  const status = 'status' in error ? error.status : undefined;
+  return typeof status === 'number' && status >= 400 && status < 500 ? error.type : null;
 }
 
-function toHttpError(error: unknown): HttpError {
+/** Exported for tests: maps any thrown value to a safe, user-facing HttpError. */
+export function toHttpError(error: unknown): HttpError {
   if (error instanceof HttpError) return error;
-  if (isJsonSyntaxError(error)) return new HttpError(400, 'INVALID_JSON', 'El cuerpo de la solicitud no es un JSON válido.');
+  const bodyErrorType = bodyParserErrorType(error);
+  if (bodyErrorType === 'entity.too.large') {
+    return new HttpError(413, 'PAYLOAD_TOO_LARGE', 'El cuerpo de la solicitud supera el tamaño máximo permitido.');
+  }
+  if (bodyErrorType) return new HttpError(400, 'INVALID_JSON', 'El cuerpo de la solicitud no es un JSON válido.');
   return new HttpError(500, 'INTERNAL_ERROR', 'Ocurrió un error interno. Intenta nuevamente más tarde.');
 }
 

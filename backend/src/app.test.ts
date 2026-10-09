@@ -1,7 +1,9 @@
 import type { Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import type { Request, Response } from 'express';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import { createApp } from './app.js';
+import { errorHandler, toHttpError } from './middleware/errorHandler.js';
 
 let server: Server;
 let baseUrl: string;
@@ -136,5 +138,60 @@ describe('controlled errors', () => {
     const { headers, body } = await get('/api/buses/BUS999');
 
     expect((body.error as { requestId: string }).requestId).toBe(headers.get('x-request-id'));
+  });
+
+  it('uses the same envelope keys for every error, without internals', async () => {
+    const { body } = await get('/api/unknown');
+
+    expect(Object.keys(body)).toEqual(['error']);
+    expect(Object.keys(body.error as object).sort()).toEqual(['code', 'message', 'requestId', 'status']);
+  });
+
+  it('responds 413 for a body over the size limit instead of a server error', async () => {
+    const response = await fetch(`${baseUrl}/api/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: 'x'.repeat(200 * 1024), password: 'x' }),
+    });
+    const body = (await response.json()) as { error: Record<string, unknown> };
+
+    expect(response.status).toBe(413);
+    expect(body.error).toMatchObject({ status: 413, code: 'PAYLOAD_TOO_LARGE' });
+  });
+});
+
+describe('errorHandler with unexpected failures', () => {
+  function fakeResponse() {
+    const res = { locals: { requestId: 'req-1' }, statusCode: 0, body: undefined as unknown };
+    return Object.assign(res, {
+      status(code: number) {
+        res.statusCode = code;
+        return this;
+      },
+      json(payload: unknown) {
+        res.body = payload;
+        return this;
+      },
+    });
+  }
+
+  it('hides the message and stack of an unexpected error behind a generic 500', () => {
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    const res = fakeResponse();
+
+    errorHandler(new TypeError('Cannot read properties of undefined (reading "secret")'), {} as Request, res as unknown as Response, () => undefined);
+
+    expect(res.statusCode).toBe(500);
+    expect(res.body).toEqual({
+      error: { status: 500, code: 'INTERNAL_ERROR', message: 'Ocurrió un error interno. Intenta nuevamente más tarde.', requestId: 'req-1' },
+    });
+    expect(JSON.stringify(res.body)).not.toMatch(/secret|TypeError|at /);
+    expect(consoleSpy).toHaveBeenCalledOnce();
+    consoleSpy.mockRestore();
+  });
+
+  it('treats thrown non-Error values as internal errors', () => {
+    expect(toHttpError('boom')).toMatchObject({ status: 500, code: 'INTERNAL_ERROR' });
+    expect(toHttpError({ type: 'entity.parse.failed', status: 400 })).toMatchObject({ status: 500 });
   });
 });
