@@ -1,0 +1,82 @@
+[
+  {
+    "id": "S01",
+    "name": "Terminal Norte",
+    "address": "Avenida Principal # 100-01 (dirección ficticia)",
+    "zone": "Norte",
+    "status": "ACTIVE",
+    "accessible": true,
+    "amenities": ["Cubierta", "Rampa de acceso", "Pantalla informativa"],
+    "coords": { "x": 100, "y": 100 }
+  },
+  {
+    "id": "S02",
+    "name": "Plaza del Mercado",
+    "address": "Calle 45 # 20-10 (dirección ficticia)",
+    "zone": "Norte",
+    "status": "ACTIVE",
+    "accessible": true,
+    "amenities": ["Cubierta"],
+    "coords": { "x": 260, "y": 170 }
+  },
+  {
+    "id": "S03",
+    "name": "Centro",
+    "address": "Carrera 7 # 12-30 (dirección ficticia)",
+    "zone": "Centro",
+    "status": "ACTIVE",
+    "accessible": true,
+    "amenities": ["Cubierta", "Rampa de acceso", "Pantalla informativa", "Punto de recarga"],
+    "coords": { "x": 430, "y": 280 }
+  },
+  {
+    "id": "S04",
+    "name": "Universidad",
+    "address": "Avenida del Conocimiento # 30-50 (dirección ficticia)",
+    "zone": "Sur",
+    "status": "ACTIVE",
+    "accessible": true,
+    "amenities": ["Cubierta", "Rampa de acceso"],
+    "coords": { "x": 520, "y": 520 }
+  },
+  {
+    "id": "S05",
+    "name": "Hospital Central",
+    "address": "Calle de la Salud # 8-15 (dirección ficticia)",
+    "zone": "Oriente",
+    "status": "ACTIVE",
+    "accessible": true,
+    "amenities": ["Cubierta", "Rampa de acceso", "Pantalla informativa"],
+    "coords": { "x": 840, "y": 460 }
+  },
+  {
+    "id": "S06",
+    "name": "Avenida Las Palmas",
+    "address": "Avenida Las Palmas # 60-22 (dirección ficticia)",
+    "zone": "Occidente",
+    "status": "ACTIVE",
+    "accessible": false,
+    "amenities": [],
+    "coords": { "x": 170, "y": 300 }
+  },
+  {
+    "id": "S07",
+    "name": "Biblioteca Pública",
+    "address": "Carrera 15 # 40-05 (dirección ficticia)",
+    "zone": "Centro",
+    "status": "ACTIVE",
+    "accessible": true,
+    "amenities": ["Cubierta"],
+    "coords": { "x": 340, "y": 420 }
+  },
+  {
+    "id": "S08",
+    "name": "Estadio Municipal",
+    "address": "Avenida del Deporte # 70-90 (dirección ficticia)",
+    "zone": "Oriente",
+    "status": "MAINTENANCE",
+    "accessible": false,
+    "amenities": ["Cubierta"],
+    "coords": { "x": 650, "y": 360 }
+  }
+]

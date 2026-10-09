@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+@theme {
+  /* System fonts only: no external font services. */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --color-brand-50: #ecfdf7;
+  --color-brand-100: #d1faec;
+  --color-brand-200: #a7f3da;
+  --color-brand-300: #6ee7c2;
+  --color-brand-400: #34d3a5;
+  --color-brand-500: #10b98a;
+  --color-brand-600: #059670;
+  --color-brand-700: #04775b;
+  --color-brand-800: #065f4a;
+  --color-brand-900: #064e3e;
+  --color-brand-950: #022c23;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-slate-100 text-slate-900 antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Visible focus ring for keyboard users on every interactive element. */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-600;
+  }
+
+  /* Simulated map: SVG stops show a ring only when focused with the keyboard. */
+  .map-stop:focus {
+    outline: none;
+  }
+
+  .map-stop .map-stop-focus {
+    opacity: 0;
+  }
+
+  .map-stop:focus-visible .map-stop-focus {
+    opacity: 1;
+  }
+
+  /* White halo keeps labels readable over routes and background. */
+  .map-label {
+    paint-order: stroke;
+    stroke: #ffffff;
+    stroke-width: 5px;
+    stroke-linejoin: round;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

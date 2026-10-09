@@ -1,0 +1,47 @@
+[
+  {
+    "id": "BUS101",
+    "plate": "MRT-101",
+    "routeId": "R12",
+    "capacity": 80,
+    "status": "IN_SERVICE",
+    "startMinute": 2,
+    "delayMinutes": 0
+  },
+  {
+    "id": "BUS102",
+    "plate": "MRT-102",
+    "routeId": "R12",
+    "capacity": 80,
+    "status": "IN_SERVICE",
+    "startMinute": 7,
+    "delayMinutes": 0
+  },
+  {
+    "id": "BUS103",
+    "plate": "MRT-103",
+    "routeId": "R18",
+    "capacity": 60,
+    "status": "IN_SERVICE",
+    "startMinute": 4,
+    "delayMinutes": 0
+  },
+  {
+    "id": "BUS104",
+    "plate": "MRT-104",
+    "routeId": "R22",
+    "capacity": 60,
+    "status": "AT_TERMINAL",
+    "startMinute": 0,
+    "delayMinutes": 0
+  },
+  {
+    "id": "BUS105",
+    "plate": "MRT-105",
+    "routeId": "R30",
+    "capacity": 40,
+    "status": "OUT_OF_SERVICE",
+    "startMinute": 0,
+    "delayMinutes": 0
+  }
+]

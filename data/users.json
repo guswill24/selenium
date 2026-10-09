@@ -1,0 +1,32 @@
+[
+  {
+    "id": "U01",
+    "username": "pasajero.demo",
+    "password": "Pasajero2026!",
+    "role": "PASSENGER",
+    "status": "ACTIVE",
+    "fullName": "Paula Pasajera (demo)",
+    "email": "pasajero@mi-ruta.demo",
+    "phone": "300 000 0001"
+  },
+  {
+    "id": "U02",
+    "username": "admin.demo",
+    "password": "Admin2026!",
+    "role": "ADMIN",
+    "status": "ACTIVE",
+    "fullName": "Andrés Administrador (demo)",
+    "email": "admin@mi-ruta.demo",
+    "phone": "300 000 0002"
+  },
+  {
+    "id": "U03",
+    "username": "bloqueado.demo",
+    "password": "Bloqueado2026!",
+    "role": "PASSENGER",
+    "status": "LOCKED",
+    "fullName": "Beatriz Bloqueada (demo)",
+    "email": "bloqueado@mi-ruta.demo",
+    "phone": "300 000 0003"
+  }
+]

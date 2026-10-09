@@ -1,0 +1,62 @@
+[
+  {
+    "id": "A01",
+    "level": "NORMAL",
+    "type": "INFORMATION",
+    "routeId": null,
+    "title": "Servicio en operación",
+    "message": "Todas las rutas activas operan con normalidad.",
+    "active": true,
+    "publishedAt": "2026-03-02T06:00:00-05:00"
+  },
+  {
+    "id": "A02",
+    "level": "INFO",
+    "type": "INFORMATION",
+    "routeId": null,
+    "title": "Horario de fin de semana",
+    "message": "Los sábados y domingos la frecuencia de las rutas es de 15 minutos.",
+    "active": true,
+    "publishedAt": "2026-03-02T06:05:00-05:00"
+  },
+  {
+    "id": "A03",
+    "level": "WARNING",
+    "type": "DELAY",
+    "routeId": "R12",
+    "title": "Retraso en ruta R12",
+    "message": "Ruta R12 presenta retraso de 8 minutos.",
+    "active": false,
+    "publishedAt": "2026-03-02T07:40:00-05:00"
+  },
+  {
+    "id": "A04",
+    "level": "WARNING",
+    "type": "ROUTE_CHANGE",
+    "routeId": "R22",
+    "title": "Mantenimiento en paradero Estadio Municipal",
+    "message": "El paradero Estadio Municipal (S08) está en mantenimiento. La ruta R22 no se detiene temporalmente en este punto.",
+    "active": true,
+    "publishedAt": "2026-03-02T07:15:00-05:00"
+  },
+  {
+    "id": "A05",
+    "level": "CRITICAL",
+    "type": "INTERRUPTION",
+    "routeId": "R30",
+    "title": "Ruta R30 suspendida",
+    "message": "La ruta R30 Circular Nocturna se encuentra suspendida hasta nuevo aviso.",
+    "active": true,
+    "publishedAt": "2026-03-01T22:00:00-05:00"
+  },
+  {
+    "id": "A06",
+    "level": "INFO",
+    "type": "INFORMATION",
+    "routeId": "R18",
+    "title": "Refuerzo en ruta R18",
+    "message": "Durante la semana de exámenes la ruta R18 tendrá buses adicionales.",
+    "active": false,
+    "publishedAt": "2026-02-20T06:00:00-05:00"
+  }
+]

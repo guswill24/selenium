@@ -1,0 +1,7 @@
+[
+  { "id": "P01", "name": "Parque de los Niños", "category": "PARK", "nearStopId": "S02", "coords": { "x": 230, "y": 240 } },
+  { "id": "P02", "name": "Museo de la Ciudad", "category": "CULTURE", "nearStopId": "S03", "coords": { "x": 500, "y": 230 } },
+  { "id": "P03", "name": "Centro Comercial El Puente", "category": "SHOPPING", "nearStopId": "S06", "coords": { "x": 120, "y": 370 } },
+  { "id": "P04", "name": "Clínica de Urgencias", "category": "HEALTH", "nearStopId": "S05", "coords": { "x": 900, "y": 390 } },
+  { "id": "P05", "name": "Coliseo Cubierto", "category": "SPORTS", "nearStopId": "S08", "coords": { "x": 700, "y": 290 } }
+]

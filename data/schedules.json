@@ -1,0 +1,9 @@
+[
+  { "routeId": "R12", "dayType": "WEEKDAY", "firstDeparture": "05:00", "lastDeparture": "22:00", "frequencyMinutes": 10 },
+  { "routeId": "R12", "dayType": "WEEKEND", "firstDeparture": "06:00", "lastDeparture": "21:00", "frequencyMinutes": 15 },
+  { "routeId": "R18", "dayType": "WEEKDAY", "firstDeparture": "05:30", "lastDeparture": "21:30", "frequencyMinutes": 12 },
+  { "routeId": "R18", "dayType": "WEEKEND", "firstDeparture": "07:00", "lastDeparture": "20:00", "frequencyMinutes": 15 },
+  { "routeId": "R22", "dayType": "WEEKDAY", "firstDeparture": "05:00", "lastDeparture": "23:00", "frequencyMinutes": 15 },
+  { "routeId": "R22", "dayType": "WEEKEND", "firstDeparture": "06:00", "lastDeparture": "22:00", "frequencyMinutes": 15 },
+  { "routeId": "R30", "dayType": "WEEKDAY", "firstDeparture": "22:00", "lastDeparture": "23:59", "frequencyMinutes": 30 }
+]

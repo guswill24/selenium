@@ -1,0 +1,78 @@
+[
+  {
+    "id": "R12",
+    "name": "Terminal – Centro",
+    "originStopId": "S01",
+    "destinationStopId": "S03",
+    "stops": [
+      { "stopId": "S01", "minutesFromStart": 0 },
+      { "stopId": "S02", "minutesFromStart": 6 },
+      { "stopId": "S03", "minutesFromStart": 12 }
+    ],
+    "estimatedMinutes": 12,
+    "status": "ACTIVE",
+    "color": "#0369a1",
+    "active": true
+  },
+  {
+    "id": "R15",
+    "name": "Expreso Terminal – Centro",
+    "originStopId": "S01",
+    "destinationStopId": "S03",
+    "stops": [
+      { "stopId": "S01", "minutesFromStart": 0 },
+      { "stopId": "S03", "minutesFromStart": 9 }
+    ],
+    "estimatedMinutes": 9,
+    "status": "ACTIVE",
+    "color": "#0f766e",
+    "active": true
+  },
+  {
+    "id": "R18",
+    "name": "Terminal – Universidad",
+    "originStopId": "S01",
+    "destinationStopId": "S04",
+    "stops": [
+      { "stopId": "S01", "minutesFromStart": 0 },
+      { "stopId": "S06", "minutesFromStart": 5 },
+      { "stopId": "S07", "minutesFromStart": 11 },
+      { "stopId": "S04", "minutesFromStart": 18 }
+    ],
+    "estimatedMinutes": 18,
+    "status": "ACTIVE",
+    "color": "#7c3aed",
+    "active": true
+  },
+  {
+    "id": "R22",
+    "name": "Centro – Hospital",
+    "originStopId": "S03",
+    "destinationStopId": "S05",
+    "stops": [
+      { "stopId": "S03", "minutesFromStart": 0 },
+      { "stopId": "S07", "minutesFromStart": 9 },
+      { "stopId": "S08", "minutesFromStart": 17 },
+      { "stopId": "S05", "minutesFromStart": 25 }
+    ],
+    "estimatedMinutes": 25,
+    "status": "ACTIVE",
+    "color": "#c2410c",
+    "active": true
+  },
+  {
+    "id": "R30",
+    "name": "Circular Nocturna",
+    "originStopId": "S02",
+    "destinationStopId": "S08",
+    "stops": [
+      { "stopId": "S02", "minutesFromStart": 0 },
+      { "stopId": "S03", "minutesFromStart": 7 },
+      { "stopId": "S08", "minutesFromStart": 16 }
+    ],
+    "estimatedMinutes": 16,
+    "status": "SUSPENDED",
+    "color": "#475569",
+    "active": false
+  }
+]
