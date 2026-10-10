@@ -725,6 +725,783 @@
           ]
         }
       ]
+    },
+    {
+      "id": "9df12dcb-8aea-4fd9-a207-367e5f2f8429",
+      "name": "09 Inicio y cierre de sesión en Vercel",
+      "commands": [
+        {
+          "id": "16c28871-4438-444e-9259-8e312b41df10",
+          "comment": "URL absoluta: corre contra Vercel aunque la URL base del proyecto sea localhost",
+          "command": "open",
+          "target": "https://selenium-exr3-beryl.vercel.app/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "c84e9356-a091-4b9e-b342-386a885c74c4",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "5fa82ef6-3921-49df-8202-c8979cf6bab7",
+          "comment": "Vercel puede tardar más la primera vez (arranque en frío)",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "b92cf082-b83a-4cb4-8b16-a7eecd4c37d2",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "pasajero.demo"
+        },
+        {
+          "id": "c196925b-a7b7-4943-a3ef-ab048f638961",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-password\"]",
+          "targets": [],
+          "value": "Pasajero2026!"
+        },
+        {
+          "id": "b86718bf-a544-4a1a-abad-1406496276f4",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "e28c421f-dbb6-4233-a017-c3120f69bcb4",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"dashboard\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "d8a23088-b0e6-4bf2-b843-a6998e6b273b",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "css=[data-testid=\"welcome-message\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "3a4baa56-0db6-4e08-ab99-d39ad235a8bc",
+          "comment": "",
+          "command": "executeScript",
+          "target": "return window.location.href",
+          "targets": [],
+          "value": "url"
+        },
+        {
+          "id": "4fd3c580-c644-413f-bdcd-805b8acce2ec",
+          "comment": "",
+          "command": "assert",
+          "target": "url",
+          "targets": [],
+          "value": "https://selenium-exr3-beryl.vercel.app/dashboard"
+        },
+        {
+          "id": "ad3f860e-d3c7-4e85-a2d2-6232c3eefa94",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-logout\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "198ac2ac-268b-4b7b-afe5-b0a2c419d778",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"logout-success\"]",
+          "targets": [],
+          "value": "10000"
+        }
+      ]
+    },
+    {
+      "id": "24e91437-72a3-4240-99bb-710bf1930a3f",
+      "name": "10 Prueba consultar ruta",
+      "commands": [
+        {
+          "id": "270f5e04-684c-4bf0-9bdd-7f534f5ce7ab",
+          "command": "open",
+          "target": "https://selenium-exr3-beryl.vercel.app/login?scenario=NORMAL",
+          "value": ""
+        },
+        {
+          "command": "click",
+          "target": "id=username",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "a68ce5f9-a6b4-4aca-bc3e-f4ff2c9adbae",
+          "targets": [
+            [
+              "id=username",
+              "id"
+            ],
+            [
+              "name=username",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-username\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#username",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='username'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/div/div/input)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "type",
+          "target": "id=username",
+          "value": "pasajero.demo",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "7b3ed2a5-b94e-48a6-b5bf-984ced3185a7",
+          "targets": [
+            [
+              "id=username",
+              "id"
+            ],
+            [
+              "name=username",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-username\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#username",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='username'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/div/div/input)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "id=password",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "efe272db-040f-42bf-8c99-2e26b8ffad97",
+          "targets": [
+            [
+              "id=password",
+              "id"
+            ],
+            [
+              "name=password",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-password\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#password",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='password'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/div[2]/div/input)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "type",
+          "target": "id=password",
+          "value": "Pasajero2026!",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "e8d53d1d-8462-4eb3-bf0a-ea1fea59fb42",
+          "targets": [
+            [
+              "id=password",
+              "id"
+            ],
+            [
+              "name=password",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-password\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#password",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='password'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/div[2]/div/input)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "css=[data-state=\"idle\"]",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "5f10fc55-ee5d-4e93-8ac1-dcddea04a8d8",
+          "targets": [
+            [
+              "css=[data-state=\"idle\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=.gap-2",
+              "css:finder"
+            ],
+            [
+              "xpath=(//button[@type='submit' and text()='Ingresar'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/button)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=//button[contains(.,'Ingresar')]",
+              "xpath:innerText"
+            ]
+          ]
+        },
+        {
+          "command": "mouseOver",
+          "target": "css=[data-testid=\"module-card-live\"]",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "75e501c3-eecb-464d-941a-f012b2cb4736",
+          "targets": [
+            [
+              "css=[data-testid=\"module-card-live\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=li:nth-child(5) > .group",
+              "css:finder"
+            ],
+            [
+              "xpath=(//main[@id='main-content']/div/div/section[2]/ul/li[5]/a)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=(//a[contains(@href, '/live')])[2]",
+              "xpath:href"
+            ]
+          ]
+        },
+        {
+          "command": "mouseOver",
+          "target": "css=[data-testid=\"module-card-stops\"]",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "4fe217b7-53a8-438b-815e-2de5a906e823",
+          "targets": [
+            [
+              "css=[data-testid=\"module-card-stops\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=li:nth-child(2) > .group",
+              "css:finder"
+            ],
+            [
+              "xpath=(//main[@id='main-content']/div/div/section[2]/ul/li[2]/a)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=(//a[contains(@href, '/stops')])[2]",
+              "xpath:href"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "css=[data-testid=\"btn-font-increase\"]",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "672ccd25-3fcc-434f-938a-f2948ba8db5e",
+          "targets": [
+            [
+              "css=[data-testid=\"btn-font-increase\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=.min-h-9:nth-child(3)",
+              "css:finder"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/div/header/div/div/div/button[3])[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=//button[contains(.,'A+')]",
+              "xpath:innerText"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "css=.text-base > span",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "914f2c47-945e-4a36-82db-ef5feebaa243",
+          "targets": [
+            [
+              "css=.text-base > span",
+              "css:finder"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/div/header/div/div/div/button[3]/span)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=//span[contains(.,'+')]",
+              "xpath:innerText"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "css=.text-base > span",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "3d983dec-b67c-4743-971e-ab67689620de",
+          "targets": [
+            [
+              "css=.text-base > span",
+              "css:finder"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/div/header/div/div/div/button[3]/span)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=//span[contains(.,'+')]",
+              "xpath:innerText"
+            ]
+          ]
+        },
+        {
+          "command": "runScript",
+          "target": "window.scrollTo(0,370.75860595703125)",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "8235ac76-8e51-4050-bb68-2cb13a8bbf7e",
+          "targets": [
+            [
+              "window.scrollTo(0,370.75860595703125)",
+              ""
+            ]
+          ]
+        },
+        {
+          "command": "select",
+          "target": "id=origin",
+          "value": "label=Plaza del Mercado (S02)",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "9a3d0fbe-5cad-4b60-a48f-28c35d8a6126",
+          "targets": [
+            [
+              "id=origin",
+              "id"
+            ],
+            [
+              "name=origin",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-origin\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#origin",
+              "css:finder"
+            ],
+            [
+              "xpath=(//select[@id='origin'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//main[@id='main-content']/div/div/section/form/div/div/select)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "id=destination",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "50bdc4a0-66d2-4bec-8d5a-31d6044146c3",
+          "targets": [
+            [
+              "id=destination",
+              "id"
+            ],
+            [
+              "name=destination",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-destination\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#destination",
+              "css:finder"
+            ],
+            [
+              "xpath=(//select[@id='destination'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//main[@id='main-content']/div/div/section/form/div/div[2]/select)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "select",
+          "target": "id=destination",
+          "value": "label=Terminal Norte (S01)",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "76e8fbb2-fc53-4605-913f-e93fd7036e92",
+          "targets": [
+            [
+              "id=destination",
+              "id"
+            ],
+            [
+              "name=destination",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-destination\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#destination",
+              "css:finder"
+            ],
+            [
+              "xpath=(//select[@id='destination'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//main[@id='main-content']/div/div/section/form/div/div[2]/select)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "css=.hover\\3A bg-brand-800",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "1b800100-aae1-4994-9bf2-a2af9843d474",
+          "targets": [
+            [
+              "css=.hover\\3A bg-brand-800",
+              "css:finder"
+            ],
+            [
+              "xpath=(//button[@type='submit' and text()='Buscar ruta'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//main[@id='main-content']/div/div/section/form/div[2]/button)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=//button[contains(.,'Buscar ruta')]",
+              "xpath:innerText"
+            ]
+          ]
+        },
+        {
+          "command": "mouseOver",
+          "target": "css=[data-state=\"loading\"]",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "5da6fe59-8303-4b57-8dec-5515d5356df9",
+          "targets": [
+            [
+              "css=[data-state=\"loading\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=.hover\\3A bg-brand-800",
+              "css:finder"
+            ],
+            [
+              "xpath=(//button[@type='submit' and text()='Buscando…'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//main[@id='main-content']/div/div/section/form/div[2]/button)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=//button[contains(.,'Buscando…')]",
+              "xpath:innerText"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "css=.sm\\3Ainline",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "a62374ec-310c-47d7-92e4-04097476ac15",
+          "targets": [
+            [
+              "css=.sm\\3Ainline",
+              "css:finder"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/div/header/div/div/div[2]/button/span)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=//span[contains(.,'Salir')]",
+              "xpath:innerText"
+            ]
+          ]
+        },
+        {
+          "command": "runScript",
+          "target": "window.scrollTo(0,0)",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "73380ef0-8be7-49df-99c9-a2881c22adc6",
+          "targets": [
+            [
+              "window.scrollTo(0,0)",
+              ""
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "769d06ae-741e-4d51-857a-24fc6e0b0d93",
+      "name": "11 Mercado Libre",
+      "commands": [
+        {
+          "id": "999dc2eb-361b-4ff5-9e22-3a81d3069f60",
+          "command": "open",
+          "target": "https://www.panamericana.com.co/libros-tecnicos//ciencia-y-tecnologia",
+          "value": ""
+        },
+        {
+          "command": "click",
+          "target": "id=downshift-1-input",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "f8213b40-05e8-4da5-9ef5-887d376ec09c",
+          "targets": [
+            [
+              "id=downshift-1-input",
+              "id"
+            ],
+            [
+              "css=#downshift-1-input",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='downshift-1-input'])[1]",
+              "xpath:attributes"
+            ]
+          ]
+        },
+        {
+          "command": "type",
+          "target": "id=downshift-1-input",
+          "value": "teclado",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "6f86ef75-32f5-4307-823a-7dc354d78a66",
+          "targets": [
+            [
+              "id=downshift-1-input",
+              "id"
+            ],
+            [
+              "css=#downshift-1-input",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='downshift-1-input'])[1]",
+              "xpath:attributes"
+            ]
+          ]
+        },
+        {
+          "command": "sendKeys",
+          "target": "id=downshift-1-input",
+          "value": "${KEY_ENTER}",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "6c277a01-793f-4790-9a34-d3f19150aa4c",
+          "targets": [
+            [
+              "id=downshift-1-input",
+              "id"
+            ],
+            [
+              "css=#downshift-1-input",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='downshift-1-input'])[1]",
+              "xpath:attributes"
+            ]
+          ]
+        },
+        {
+          "command": "runScript",
+          "target": "window.scrollTo(0,6)",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "72e2c66a-c2f1-45e8-bb00-98c67f4ac211",
+          "targets": [
+            [
+              "window.scrollTo(0,6)",
+              ""
+            ]
+          ]
+        },
+        {
+          "command": "runScript",
+          "target": "window.scrollTo(0,0)",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "aed315df-704c-43e2-9cbd-27e85494abed",
+          "targets": [
+            [
+              "window.scrollTo(0,0)",
+              ""
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "css=.vtex-search-result-3-x-galleryItem:nth-child(1) .vtex-flex-layout-0-x-flexColChild:nth-child(1) .vtex-flex-layout-0-x-flexColChild:nth-child(1) .vtex-add-to-cart-button-0-x-buttonText:nth-child(1)",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "7284be77-6f9a-4dc3-b010-c93538e90e1b",
+          "targets": [
+            [
+              "css=.vtex-search-result-3-x-galleryItem:nth-child(1) .vtex-flex-layout-0-x-flexColChild:nth-child(1) .vtex-flex-layout-0-x-flexColChild:nth-child(1) .vtex-add-to-cart-button-0-x-buttonText:nth-child(1)",
+              "css:finder"
+            ],
+            [
+              "xpath=(//div[@id='gallery-layout-container']/div/section/a/article/div/div/div/div[2]/div/div[2]/div/div/div/div/div[2]/div/div/button/div/div/span)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "mouseOver",
+          "target": "css=.vtex-search-result-3-x-galleryItem:nth-child(1) .vtex-flex-layout-0-x-flexColChild:nth-child(1) .vtex-flex-layout-0-x-flexColChild:nth-child(1) .vtex-add-to-cart-button-0-x-buttonText:nth-child(1)",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "b80ab4dd-a57f-45a0-98fc-22f61114a01b",
+          "targets": [
+            [
+              "css=.vtex-search-result-3-x-galleryItem:nth-child(1) .vtex-flex-layout-0-x-flexColChild:nth-child(1) .vtex-flex-layout-0-x-flexColChild:nth-child(1) .vtex-add-to-cart-button-0-x-buttonText:nth-child(1)",
+              "css:finder"
+            ],
+            [
+              "xpath=(//div[@id='gallery-layout-container']/div/section/a/article/div/div/div/div[2]/div/div[2]/div/div/div/div/div[2]/div/div/button/div/div/span)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        }
+      ]
     }
   ],
   "suites": [
@@ -740,12 +1517,14 @@
         "c90918ae-e31a-4246-9e67-e38e5b98d2bb",
         "a2dd4481-c89c-4254-b700-6691ba91663c",
         "04c64c88-d965-4e8f-98e2-49540d31033e",
-        "683d1e82-5ba0-42f8-a3e1-4df68236369d"
+        "683d1e82-5ba0-42f8-a3e1-4df68236369d",
+        "9df12dcb-8aea-4fd9-a207-367e5f2f8429"
       ]
     }
   ],
   "urls": [
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "https://selenium-exr3-beryl.vercel.app"
   ],
   "plugins": []
 }

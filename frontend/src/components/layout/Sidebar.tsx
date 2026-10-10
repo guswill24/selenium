@@ -1,4 +1,4 @@
-import { BookOpenText, ExternalLink, Presentation, X } from 'lucide-react';
+import { BookOpenText, ExternalLink, FlaskConical, Presentation, X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router';
 import { useAuth } from '../../hooks/useAuth.ts';
@@ -54,7 +54,8 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           // No slide animation on purpose: state changes are instant, so tests that resize the
           // window or toggle the menu never observe an intermediate position.
           'fixed inset-y-0 left-0 z-40 flex w-72 max-w-[85vw] flex-col bg-slate-900',
-          'lg:static lg:z-auto lg:translate-x-0',
+          // Sticky on desktop: the menu (and its footer links) stays in view on long pages.
+          'lg:sticky lg:top-0 lg:z-auto lg:h-screen lg:translate-x-0',
           isOpen ? 'translate-x-0' : '-translate-x-full',
         )}
         data-testid="sidebar"
@@ -119,6 +120,20 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           >
             <BookOpenText className="h-5 w-5 shrink-0" aria-hidden="true" />
             <span>Caso de estudio</span>
+          </NavLink>
+          <NavLink
+            to="/selenium-guide"
+            onClick={() => onClose(false)}
+            data-testid="nav-selenium-guide"
+            className={({ isActive }) =>
+              cn(
+                'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
+                isActive ? 'bg-brand-700 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white',
+              )
+            }
+          >
+            <FlaskConical className="h-5 w-5 shrink-0" aria-hidden="true" />
+            <span>Guía Selenium IDE</span>
           </NavLink>
           {/* Static deck served from /presentacion/, outside the SPA router. */}
           <a

@@ -91,6 +91,11 @@ export function createAppRouter() {
               lazy: async () => ({ Component: (await import('../pages/CaseStudyPage.tsx')).CaseStudyPage }),
               handle: { crumb: 'Caso de estudio' } satisfies RouteHandle,
             },
+            {
+              path: 'selenium-guide',
+              lazy: async () => ({ Component: (await import('../pages/SeleniumGuidePage.tsx')).SeleniumGuidePage }),
+              handle: { crumb: 'Guía Selenium IDE' } satisfies RouteHandle,
+            },
           ],
         },
         { path: '*', element: <NotFoundPage /> },

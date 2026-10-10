@@ -1,10 +1,12 @@
 // Copyright (c) 2026 guswillsan@hotmail.com. All rights reserved.
 // Deck data for index.html (single-page deck) and its offline download list.
-// Slide N (1-based) shows assets/slide-NN.webp. Order and text follow the 27 infographics of the CIPAS session.
+// Slide N (1-based) shows assets/slide-(N-1).webp, or its own src: the opening slide (slide-00.webp) was added
+// before the 27 infographics of the CIPAS session, which keep their file names.
 // alt: what a screen-reader user needs from each infographic (title + main content), kept concise.
 window.DECK = {
   title: 'Mi Ruta · Selenium IDE – CIPAS Calidad de Software',
   slides: [
+    { title: '¡Amarren sus cinturones!', src: 'assets/slide-00.webp', anim: 'boarding', alt: '¡Amarren sus cinturones! Que comienza la clase de pruebas de sistema con Selenium IDE. Un estudiante con audífonos y cinturón abrochado en un avión. Arquitectura de las pruebas, de arriba abajo: pruebas de aceptación (validan el cumplimiento de necesidades del usuario), pruebas de sistema (evalúan el sistema completo en su entorno de prueba; aquí se usa Selenium IDE), pruebas de integración (verifican la interacción entre componentes) y pruebas unitarias (validan unidades individuales de código). Otros tipos de pruebas: funcionales, no funcionales, regresión, seguridad, usabilidad, rendimiento y compatibilidad. Flujo de pruebas con Selenium IDE: 1. identificar requisitos, 2. diseñar casos de prueba, 3. grabar o crear pruebas en Selenium IDE, 4. ejecutar automatización, 5. analizar resultados, 6. reportar y documentar. Objetivo: entender, aplicar, automatizar, validar, aprender rápido. Destino: pruebas automatizadas exitosas. ¡Aprovecha cada minuto!' },
     { title: 'CIPAS – Calidad de Software', anim: 'cover', alt: 'Portada: CIPAS – Calidad de Software. Automatización de pruebas con Selenium IDE. Caso práctico: Mi Ruta, del requisito a la evidencia de prueba. Curso Calidad de Software 202016903, tutor Gustavo Sánchez Rodríguez. Flujo en siete pasos: usuario, requisito, Mi Ruta como sistema bajo prueba, caso de prueba, Selenium IDE, resultado PASS o FAIL con evidencia y análisis.' },
     { title: '1. Frontend de Mi Ruta', alt: '1. Frontend de Mi Ruta: la interfaz web con la que interactúa el usuario, construida con React, TypeScript y Vite. Presenta las tecnologías (React, TypeScript, Vite, Tailwind CSS, React Router y React Hooks), el diseño y la experiencia, los módulos principales, los componentes de la interfaz con identificadores data-testid y el diseño responsivo en escritorio, tableta y móvil.' },
     { title: '2. ¿Qué vamos a aprender?', alt: '2. ¿Qué vamos a aprender? Nueve objetivos: comprender el sistema bajo prueba, reconocer la arquitectura de Mi Ruta (web, API y base de datos), identificar puntos de prueba, diseñar casos de prueba, utilizar Selenium IDE, diferenciar acciones y validaciones (click y verifyText), ejecutar pruebas, interpretar PASS y FAIL y realizar análisis técnico.' },
@@ -34,4 +36,4 @@ window.DECK = {
     { title: '26. Cierre', alt: '26. Cierre: del usuario al resultado. Proceso completo: usuario, necesidad, requisito, calidad (ISO/IEC 25010), arquitectura, caso de prueba, Selenium IDE, PASS o FAIL y análisis. Mensaje final: Selenium automatiza; el tester piensa.' },
   ],
 };
-window.DECK.src = (i) => `assets/slide-${String(i + 1).padStart(2, '0')}.webp`;
+window.DECK.src = (i) => window.DECK.slides[i].src || `assets/slide-${String(i).padStart(2, '0')}.webp`;

@@ -1,0 +1,1482 @@
+{
+  "id": "312dd7e5-d019-458d-8d85-580529bf6b56",
+  "version": "3.0",
+  "name": "Mi Ruta – Vercel",
+  "url": "https://selenium-exr3-beryl.vercel.app",
+  "tests": [
+    {
+      "id": "8e5d438c-51b0-4468-8239-f9766574dd67",
+      "name": "01 Inicio de sesión válido",
+      "commands": [
+        {
+          "id": "17412734-9a89-4f4b-b820-c84248dea039",
+          "comment": "Escenario NORMAL: estado conocido",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "196c5e2e-2f6b-4ed8-8993-c4f6c953ffe5",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "4ebbec67-b80c-452c-8122-3d00d7e89a2c",
+          "comment": "Margen extra: Vercel puede tardar en el primer acceso",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "1f25ea81-9eb3-43cc-a2c9-6245aa7359a3",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "pasajero.demo"
+        },
+        {
+          "id": "bb1fab51-f016-4c23-b974-2b0bfc3e0687",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-password\"]",
+          "targets": [],
+          "value": "Pasajero2026!"
+        },
+        {
+          "id": "554f7d60-a6f8-4619-88f2-cc40d09b2c0e",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "2fc9c941-4750-4cd1-a5ae-004fcfc4022b",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"dashboard\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "3d7275f6-6ff3-4f71-9ff3-b4bd0ae427d2",
+          "comment": "",
+          "command": "assertText",
+          "target": "css=[data-testid=\"welcome-message\"]",
+          "targets": [],
+          "value": "Hola, Paula Pasajera (demo)"
+        },
+        {
+          "id": "823287e7-ba64-4e21-b79b-85ace0f5126b",
+          "comment": "",
+          "command": "executeScript",
+          "target": "return window.location.pathname",
+          "targets": [],
+          "value": "ruta"
+        },
+        {
+          "id": "18159d56-02fe-4246-b69f-3a413ed01871",
+          "comment": "",
+          "command": "assert",
+          "target": "ruta",
+          "targets": [],
+          "value": "/dashboard"
+        }
+      ]
+    },
+    {
+      "id": "7f192809-85bd-4923-9843-4a2cbd3bc497",
+      "name": "02 Consulta de ruta Terminal Norte a Centro",
+      "commands": [
+        {
+          "id": "17412734-9a89-4f4b-b820-c84248dea039",
+          "comment": "Escenario NORMAL: estado conocido",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "196c5e2e-2f6b-4ed8-8993-c4f6c953ffe5",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "4ebbec67-b80c-452c-8122-3d00d7e89a2c",
+          "comment": "Margen extra: Vercel puede tardar en el primer acceso",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "1f25ea81-9eb3-43cc-a2c9-6245aa7359a3",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "pasajero.demo"
+        },
+        {
+          "id": "bb1fab51-f016-4c23-b974-2b0bfc3e0687",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-password\"]",
+          "targets": [],
+          "value": "Pasajero2026!"
+        },
+        {
+          "id": "554f7d60-a6f8-4619-88f2-cc40d09b2c0e",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "2fc9c941-4750-4cd1-a5ae-004fcfc4022b",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"dashboard\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "30617e7b-bfd7-4558-aa60-1ceff17a5fff",
+          "comment": "",
+          "command": "open",
+          "target": "/routes",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "d56531d7-5820-4e5b-9ccb-07e10bc311bc",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-origin\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "6727cb42-130f-432b-80cb-f972ef926844",
+          "comment": "Terminal Norte",
+          "command": "select",
+          "target": "css=[data-testid=\"input-origin\"]",
+          "targets": [],
+          "value": "value=S01"
+        },
+        {
+          "id": "273ba273-3c2f-4592-9edc-109e4be19332",
+          "comment": "Centro",
+          "command": "select",
+          "target": "css=[data-testid=\"input-destination\"]",
+          "targets": [],
+          "value": "value=S03"
+        },
+        {
+          "id": "3d187744-9f69-47c2-bf60-8aa4944e384f",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-search-route\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "f3f5c736-66b1-4f46-a3a2-c01bd88440cf",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"route-results\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "bc2fc5a1-127b-44d7-bdeb-03121c736d77",
+          "comment": "",
+          "command": "storeAttribute",
+          "target": "css=[data-testid=\"route-results\"]@data-count",
+          "targets": [],
+          "value": "total"
+        },
+        {
+          "id": "7f1dec53-f99c-4f8a-87c4-88dc2bb1ce9b",
+          "comment": "Rutas directas R15 y R12",
+          "command": "assert",
+          "target": "total",
+          "targets": [],
+          "value": "2"
+        },
+        {
+          "id": "2a94d80b-ce4f-4559-b6ff-7833e05d16ff",
+          "comment": "R15 es la expresa (más rápida)",
+          "command": "assertText",
+          "target": "css=[data-testid=\"route-time-R15\"]",
+          "targets": [],
+          "value": "Tiempo estimado: 9 minutos"
+        },
+        {
+          "id": "1be74c7e-cc08-4160-829f-d7a7ad3d33ee",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "css=[data-testid=\"route-card-R12\"]",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "c7344d9e-284d-49ef-8d52-cdbff6db133c",
+      "name": "03 Búsqueda de paradero por nombre",
+      "commands": [
+        {
+          "id": "17412734-9a89-4f4b-b820-c84248dea039",
+          "comment": "Escenario NORMAL: estado conocido",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "196c5e2e-2f6b-4ed8-8993-c4f6c953ffe5",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "4ebbec67-b80c-452c-8122-3d00d7e89a2c",
+          "comment": "Margen extra: Vercel puede tardar en el primer acceso",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "1f25ea81-9eb3-43cc-a2c9-6245aa7359a3",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "pasajero.demo"
+        },
+        {
+          "id": "bb1fab51-f016-4c23-b974-2b0bfc3e0687",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-password\"]",
+          "targets": [],
+          "value": "Pasajero2026!"
+        },
+        {
+          "id": "554f7d60-a6f8-4619-88f2-cc40d09b2c0e",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "2fc9c941-4750-4cd1-a5ae-004fcfc4022b",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"dashboard\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "d8727b4b-352f-480c-9c02-63267f7157fe",
+          "comment": "",
+          "command": "open",
+          "target": "/stops",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "0801d03e-7f96-4ac8-a486-a09f24133320",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-stop-search\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "94fa0cf4-9a14-472c-b3ca-01c56e0187ba",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-stop-search\"]",
+          "targets": [],
+          "value": "Centro"
+        },
+        {
+          "id": "d19970aa-5fa9-430a-9360-859fad4cb8ea",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-search-stop\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "4ba42dd7-f13f-4ca8-bcb8-97c9c4d2ed9d",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"stop-card-S03\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "b23b1150-ad96-420a-9a37-1fa67ef367ec",
+          "comment": "",
+          "command": "storeAttribute",
+          "target": "css=[data-testid=\"stops-list\"]@data-count",
+          "targets": [],
+          "value": "total"
+        },
+        {
+          "id": "211af429-442b-4266-90c4-d48c84fbc3de",
+          "comment": "",
+          "command": "assert",
+          "target": "total",
+          "targets": [],
+          "value": "2"
+        },
+        {
+          "id": "12f2255d-bc02-4403-9300-a0e22d6dd1e8",
+          "comment": "",
+          "command": "assertText",
+          "target": "css=[data-testid=\"stop-name-S03\"]",
+          "targets": [],
+          "value": "Centro"
+        }
+      ]
+    },
+    {
+      "id": "51ba1fdd-51e7-4f18-be5d-e94927ae50c8",
+      "name": "04 Filtro de alertas críticas",
+      "commands": [
+        {
+          "id": "17412734-9a89-4f4b-b820-c84248dea039",
+          "comment": "Escenario NORMAL: estado conocido",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "196c5e2e-2f6b-4ed8-8993-c4f6c953ffe5",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "4ebbec67-b80c-452c-8122-3d00d7e89a2c",
+          "comment": "Margen extra: Vercel puede tardar en el primer acceso",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "1f25ea81-9eb3-43cc-a2c9-6245aa7359a3",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "pasajero.demo"
+        },
+        {
+          "id": "bb1fab51-f016-4c23-b974-2b0bfc3e0687",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-password\"]",
+          "targets": [],
+          "value": "Pasajero2026!"
+        },
+        {
+          "id": "554f7d60-a6f8-4619-88f2-cc40d09b2c0e",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "2fc9c941-4750-4cd1-a5ae-004fcfc4022b",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"dashboard\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "ba1520f8-ea23-4757-ac73-50bbf6c0c9fb",
+          "comment": "",
+          "command": "open",
+          "target": "/alerts",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "6f03cfd5-d5a7-478a-88bc-8ebfd025a915",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"alerts-list\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "4c26faed-5b89-454d-b92d-13ff48229d56",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"alert-level-filter-CRITICAL\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "537876af-0113-4345-83d2-e4c03109a45a",
+          "comment": "Las alertas de otro nivel desaparecen",
+          "command": "waitForElementNotPresent",
+          "target": "css=[data-testid=\"alert-card-A04\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "7bc4f770-0fac-4f4c-ad47-fb1c69c38c97",
+          "comment": "",
+          "command": "storeAttribute",
+          "target": "css=[data-testid=\"alerts-list\"]@data-count",
+          "targets": [],
+          "value": "total"
+        },
+        {
+          "id": "d5957b9c-5c2b-46b1-a058-58b06176b364",
+          "comment": "",
+          "command": "assert",
+          "target": "total",
+          "targets": [],
+          "value": "1"
+        },
+        {
+          "id": "2e94fa17-8be2-4d59-8646-53ac20868919",
+          "comment": "",
+          "command": "storeAttribute",
+          "target": "css=[data-testid=\"alert-card-A05\"]@data-level",
+          "targets": [],
+          "value": "nivel"
+        },
+        {
+          "id": "83ff6358-3f63-4486-aea7-16931449c31a",
+          "comment": "",
+          "command": "assert",
+          "target": "nivel",
+          "targets": [],
+          "value": "CRITICAL"
+        }
+      ]
+    },
+    {
+      "id": "4eb0358a-191f-4c88-9786-89aa5df3b8bb",
+      "name": "05 Planificación de viaje Terminal Norte a Universidad",
+      "commands": [
+        {
+          "id": "17412734-9a89-4f4b-b820-c84248dea039",
+          "comment": "Escenario NORMAL: estado conocido",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "196c5e2e-2f6b-4ed8-8993-c4f6c953ffe5",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "4ebbec67-b80c-452c-8122-3d00d7e89a2c",
+          "comment": "Margen extra: Vercel puede tardar en el primer acceso",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "1f25ea81-9eb3-43cc-a2c9-6245aa7359a3",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "pasajero.demo"
+        },
+        {
+          "id": "bb1fab51-f016-4c23-b974-2b0bfc3e0687",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-password\"]",
+          "targets": [],
+          "value": "Pasajero2026!"
+        },
+        {
+          "id": "554f7d60-a6f8-4619-88f2-cc40d09b2c0e",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "2fc9c941-4750-4cd1-a5ae-004fcfc4022b",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"dashboard\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "bf8367ac-9abd-4b87-938e-18b831870873",
+          "comment": "",
+          "command": "open",
+          "target": "/planner",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "514bce4e-da64-41fe-b2c0-b110cd38f8d9",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-origin\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "ff585ae2-e09e-4c44-8305-f32511196e8a",
+          "comment": "Terminal Norte",
+          "command": "select",
+          "target": "css=[data-testid=\"input-origin\"]",
+          "targets": [],
+          "value": "value=S01"
+        },
+        {
+          "id": "51b854a8-4555-4b1d-9f56-efcb1b74cc00",
+          "comment": "Universidad",
+          "command": "select",
+          "target": "css=[data-testid=\"input-destination\"]",
+          "targets": [],
+          "value": "value=S04"
+        },
+        {
+          "id": "d1477b21-f0d5-4ac0-b896-5ecc3f73160b",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-plan-trip\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "58e0f418-cbf6-48a6-9bb8-c982eaf37b01",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"trip-recommended\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "fc138c81-0666-4102-b421-915f93dcb240",
+          "comment": "",
+          "command": "storeAttribute",
+          "target": "css=[data-testid=\"trip-recommended\"]@data-option-id",
+          "targets": [],
+          "value": "opcion"
+        },
+        {
+          "id": "f9d3a8ef-0ad0-42cd-b0aa-8a12d779e364",
+          "comment": "La recomendada es la directa R18",
+          "command": "assert",
+          "target": "opcion",
+          "targets": [],
+          "value": "R18"
+        },
+        {
+          "id": "f01c432f-4454-44e9-b122-b9613d449be8",
+          "comment": "",
+          "command": "assertText",
+          "target": "css=[data-testid=\"trip-time-R18\"]",
+          "targets": [],
+          "value": "Tiempo estimado: 18 minutos"
+        }
+      ]
+    },
+    {
+      "id": "edfb90a0-f27c-4bc8-90a5-68cbfebc0059",
+      "name": "06 Aserción: contraseña incorrecta",
+      "commands": [
+        {
+          "id": "1b3c6399-9c15-4640-951e-eec105ef1e5f",
+          "comment": "",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "ccca03ad-25b9-4730-bfa8-602d7848a8c5",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "a1bea63f-a903-4067-b8af-10fe96bdd65f",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "6394693f-fedf-4f00-aded-b6cca75a5e3e",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "pasajero.demo"
+        },
+        {
+          "id": "5dcc3169-1061-4abc-af2d-fd12072d1d91",
+          "comment": "Dato inválido a propósito",
+          "command": "type",
+          "target": "css=[data-testid=\"input-password\"]",
+          "targets": [],
+          "value": "incorrecta"
+        },
+        {
+          "id": "dd6ba765-2d62-4e3d-aea4-c47a2b95d7a0",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "a29f61cf-b22d-482e-b2b6-902144f79e0c",
+          "comment": "Esperar antes de verificar",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"login-error\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "470b4db6-2e56-4817-8f08-eef098ecce8a",
+          "comment": "ASERCIÓN 1: el mensaje visible es exactamente este",
+          "command": "assertText",
+          "target": "css=[data-testid=\"login-error-text\"]",
+          "targets": [],
+          "value": "La contraseña es incorrecta."
+        },
+        {
+          "id": "b11c0e1c-3534-462f-a22f-ceb40d88825e",
+          "comment": "",
+          "command": "storeAttribute",
+          "target": "css=[data-testid=\"login-error\"]@data-error-code",
+          "targets": [],
+          "value": "codigo"
+        },
+        {
+          "id": "db295b89-c4de-49d1-b0f7-1a8c0c012dbe",
+          "comment": "ASERCIÓN 2: el código técnico del error",
+          "command": "assert",
+          "target": "codigo",
+          "targets": [],
+          "value": "WRONG_PASSWORD"
+        },
+        {
+          "id": "fc8dbe5c-2028-43da-a342-a5a0ec3eb494",
+          "comment": "ASERCIÓN 3: no se ingresó al sistema",
+          "command": "assertElementNotPresent",
+          "target": "css=[data-testid=\"dashboard\"]",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "e07ea94e-3e7b-4709-b737-4b4c02ced170",
+      "name": "07 Regresión: recorrido de la ruta R12",
+      "commands": [
+        {
+          "id": "17843548-d9ef-4e3e-9cec-b2fac2e5dcd5",
+          "comment": "Línea base: NORMAL. Para simular un cambio en el sistema, cambiar a ROUTE_CHANGED y volver a ejecutar",
+          "command": "store",
+          "target": "NORMAL",
+          "targets": [],
+          "value": "escenario"
+        },
+        {
+          "id": "ff19dc7f-db6b-4c47-85ad-ac4c81b25f04",
+          "comment": "Laboratorio de escenarios (página pública)",
+          "command": "open",
+          "target": "/lab",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "e0d51751-9b6b-4b42-b2c6-80c60ebf4b4d",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "84e3208a-33c7-40fe-9110-3dd989a7732c",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-scenario\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "11f92675-5db2-4a59-9d2a-e7d37e44f8c4",
+          "comment": "",
+          "command": "select",
+          "target": "css=[data-testid=\"input-scenario\"]",
+          "targets": [],
+          "value": "value=${escenario}"
+        },
+        {
+          "id": "e1ac6edd-f6b3-4a4c-8c5f-882f4fdf4ce6",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-apply-scenario\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "85392f4a-a169-41d4-857d-0d8581ad10f7",
+          "comment": "Esperar a que el laboratorio confirme el escenario",
+          "command": "waitForElementPresent",
+          "target": "css=[data-testid=\"lab-current-scenario\"][data-scenario=\"${escenario}\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "f3f80830-4565-492b-b6f6-4fdeb9afd19a",
+          "comment": "",
+          "command": "open",
+          "target": "/login",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "e0bc3e95-1212-4ca9-b96d-48c7c9f8b234",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "9d38788b-c848-4c64-80bb-0b3f475149e1",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "pasajero.demo"
+        },
+        {
+          "id": "ffa487e4-1589-407f-8f14-3626ad52258d",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-password\"]",
+          "targets": [],
+          "value": "Pasajero2026!"
+        },
+        {
+          "id": "b68e80fd-54f6-42ca-8a01-58e7117d742a",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "82b928ad-9b42-4a72-ad6e-43e0cefd5969",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"dashboard\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "4945015b-6733-4630-9989-22d1bbac53d5",
+          "comment": "",
+          "command": "storeAttribute",
+          "target": "css=[data-testid=\"scenario-badge\"]@data-scenario",
+          "targets": [],
+          "value": "activo"
+        },
+        {
+          "id": "0a4f98a7-2313-49ec-92fe-f359a6f51672",
+          "comment": "Confirma que el escenario elegido quedó activo",
+          "command": "assert",
+          "target": "activo",
+          "targets": [],
+          "value": "${escenario}"
+        },
+        {
+          "id": "3bee7253-10a3-438c-925f-a0618f466014",
+          "comment": "",
+          "command": "open",
+          "target": "/routes",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "bf8bb2c0-a22b-4645-8754-9c00ee620ac3",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-origin\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "e2a6bfd4-296d-4831-8f0b-cfa084ce8bb7",
+          "comment": "Terminal Norte",
+          "command": "select",
+          "target": "css=[data-testid=\"input-origin\"]",
+          "targets": [],
+          "value": "value=S01"
+        },
+        {
+          "id": "958aed4c-78c6-40eb-a4ae-044b26252e3a",
+          "comment": "Centro",
+          "command": "select",
+          "target": "css=[data-testid=\"input-destination\"]",
+          "targets": [],
+          "value": "value=S03"
+        },
+        {
+          "id": "c647fc37-8371-4d2b-a025-7c7d1ade7e89",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-search-route\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "f766522c-f535-4c24-bd7f-659e4a623a51",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"btn-select-route-R12\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "c0263322-c5a8-4831-b6b1-402b49e7089b",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-select-route-R12\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "c15ded8b-0f67-4d03-b4e2-368b5586c67d",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"route-detail\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "1ce6cc1c-5cac-428a-ba99-aae7b86daecb",
+          "comment": "Comportamiento esperado: R12 pasa por Plaza del Mercado (S02)",
+          "command": "assertElementPresent",
+          "target": "css=[data-testid=\"route-detail-stop-S02\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "44045239-3d21-4423-a9e4-327710a36a87",
+          "comment": "Comportamiento esperado: R12 tarda 12 minutos",
+          "command": "assertText",
+          "target": "css=[data-testid=\"route-time-R12\"]",
+          "targets": [],
+          "value": "Tiempo estimado: 12 minutos"
+        },
+        {
+          "id": "bfa8cffc-9df0-4e67-ad03-bcee94df5cf6",
+          "comment": "Dejar el navegador en NORMAL",
+          "command": "open",
+          "target": "/lab",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "2548ea75-f74e-4490-8078-be5ac2e2ded6",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"btn-reset-scenario\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "22753900-4f8d-40bc-9ccc-27450bee23c1",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-reset-scenario\"]",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "842590e3-766d-4d01-8845-6e4abf8adb3f",
+      "name": "08 Prueba",
+      "commands": [
+        {
+          "id": "6d6c310e-b4a5-4262-beab-cf970671f5b9",
+          "command": "open",
+          "target": "/",
+          "value": ""
+        },
+        {
+          "command": "click",
+          "target": "id=username",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "0ec401cc-583f-4b84-a214-220b5c16f66e",
+          "targets": [
+            [
+              "id=username",
+              "id"
+            ],
+            [
+              "name=username",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-username\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#username",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='username'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/div/div/input)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "type",
+          "target": "id=username",
+          "value": "pasajero.demo",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "c00e849f-cc57-413d-91d5-43e777bd46cb",
+          "targets": [
+            [
+              "id=username",
+              "id"
+            ],
+            [
+              "name=username",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-username\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#username",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='username'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/div/div/input)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "type",
+          "target": "id=password",
+          "value": "Pasajero2026!",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "5d9af445-8048-4a35-8d15-7e4072419a75",
+          "targets": [
+            [
+              "id=password",
+              "id"
+            ],
+            [
+              "name=password",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-password\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#password",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='password'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/div[2]/div/input)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "css=[data-state=\"idle\"]",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "b179691c-6538-4b10-a312-c1044c48b7c6",
+          "targets": [
+            [
+              "css=[data-state=\"idle\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=.gap-2",
+              "css:finder"
+            ],
+            [
+              "xpath=(//button[@type='submit' and text()='Ingresar'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/button)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=//button[contains(.,'Ingresar')]",
+              "xpath:innerText"
+            ]
+          ]
+        },
+        {
+          "command": "mouseOver",
+          "target": "css=[data-state=\"idle\"]",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "4fab54d0-81db-4bb6-9cbe-1b3fd29da192",
+          "targets": [
+            [
+              "css=[data-state=\"idle\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=.gap-2",
+              "css:finder"
+            ],
+            [
+              "xpath=(//button[@type='submit' and text()='Ingresar'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/button)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=//button[contains(.,'Ingresar')]",
+              "xpath:innerText"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "css=[data-testid=\"btn-open-menu\"]",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "5549ffcc-f558-4c5b-b7ba-1b44e2ed3ae3",
+          "targets": [
+            [
+              "css=[data-testid=\"btn-open-menu\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=.p-2:nth-child(1)",
+              "css:finder"
+            ],
+            [
+              "xpath=(//button[@type='button'])[4]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/div/header/div/button)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "mouseOver",
+          "target": "css=[data-testid=\"btn-open-menu\"]",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "6d7562d5-1271-48e1-b11a-d94af44e5aea",
+          "targets": [
+            [
+              "css=[data-testid=\"btn-open-menu\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=.p-2:nth-child(1)",
+              "css:finder"
+            ],
+            [
+              "xpath=(//button[@type='button'])[4]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/div/header/div/button)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "css=li:nth-child(3) > .items-center > span",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "15bef75e-576b-46e0-a402-c0fcd1dedea6",
+          "targets": [
+            [
+              "css=li:nth-child(3) > .items-center > span",
+              "css:finder"
+            ],
+            [
+              "xpath=(//aside[@id='app-sidebar']/nav/div/ul/li[3]/a/span)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=//span[contains(.,'Paraderos')]",
+              "xpath:innerText"
+            ]
+          ]
+        },
+        {
+          "command": "runScript",
+          "target": "window.scrollTo(0,158)",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "4326b178-b3e4-48a3-84c8-dedae589fc9c",
+          "targets": [
+            [
+              "window.scrollTo(0,158)",
+              ""
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "id=stop-search",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "a481512e-fb3b-41e2-bd10-05bd25f84529",
+          "targets": [
+            [
+              "id=stop-search",
+              "id"
+            ],
+            [
+              "name=stop-search",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-stop-search\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#stop-search",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='stop-search'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//main[@id='main-content']/div/div/section/form/div/div/div/input)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "type",
+          "target": "id=stop-search",
+          "value": "centro",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "4ff90f9a-9a7c-4f66-9f5e-ff2418c4ebe1",
+          "targets": [
+            [
+              "id=stop-search",
+              "id"
+            ],
+            [
+              "name=stop-search",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-stop-search\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#stop-search",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='stop-search'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//main[@id='main-content']/div/div/section/form/div/div/div/input)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "css=[data-state=\"idle\"]",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "cd5427c4-77c4-4983-8e6f-beef44f3174e",
+          "targets": [
+            [
+              "css=[data-state=\"idle\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=.disabled\\3Aopacity-60:nth-child(1)",
+              "css:finder"
+            ],
+            [
+              "xpath=(//button[@type='submit' and text()='Buscar paradero'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//main[@id='main-content']/div/div/section/form/div[2]/button)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=//button[contains(.,'Buscar paradero')]",
+              "xpath:innerText"
+            ]
+          ]
+        },
+        {
+          "command": "mouseOver",
+          "target": "css=[data-state=\"loading\"]",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "93e68006-acd9-4568-b7f5-3997ff2a88a9",
+          "targets": [
+            [
+              "css=[data-state=\"loading\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=.disabled\\3Aopacity-60:nth-child(1)",
+              "css:finder"
+            ],
+            [
+              "xpath=(//button[@type='submit' and text()='Buscando…'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//main[@id='main-content']/div/div/section/form/div[2]/button)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=//button[contains(.,'Buscando…')]",
+              "xpath:innerText"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a9ce44aa-f1dd-45d4-b024-5e3eb526fb61",
+      "name": "08 Prueba (corregida)",
+      "commands": [
+        {
+          "id": "d640f081-75a3-4ebb-8fb2-bb93caaf31ae",
+          "comment": "",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "34c71c06-ee91-484b-9849-9c67b3fa4070",
+          "comment": "Ventana fija: el menú lateral queda siempre visible",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "2574273d-febd-4fc1-8653-918171a661cb",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "85d020b6-f6bd-4fc9-9ddd-c10d54893dbc",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "pasajero.demo"
+        },
+        {
+          "id": "b496d82a-5458-42eb-950f-b697b4b9fb3c",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-password\"]",
+          "targets": [],
+          "value": "Pasajero2026!"
+        },
+        {
+          "id": "3bc7b948-36a0-4beb-b58e-fa6d81e2f789",
+          "comment": "Antes: css=[data-state=\"idle\"] (estado que cambia)",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "24a034bd-a7ab-4734-a14b-c77268e08a66",
+          "comment": "Antes: mouseOver sobre un botón que ya no existe",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"dashboard\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "64c61cb8-01c1-4958-b81b-11414ba5a1eb",
+          "comment": "Antes: btn-open-menu + li:nth-child(3) (depende del tamaño y la posición)",
+          "command": "click",
+          "target": "css=[data-testid=\"nav-stops\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "dbf75854-78e3-4dca-80c9-ec95b22efaf6",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-stop-search\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "500565af-7083-47dd-90fb-c20d8b1b8559",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-stop-search\"]",
+          "targets": [],
+          "value": "centro"
+        },
+        {
+          "id": "42d8d62b-7f73-48cb-a619-c670ca641ac1",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-search-stop\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "c3e32a5a-c739-4599-8533-5a88499dd17e",
+          "comment": "Antes: mouseOver sobre data-state=\"loading\" (dura milisegundos)",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"stop-card-S03\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "a87a09d9-a954-492e-ba38-99de5befc73c",
+          "comment": "Verificación: la grabación no tenía ninguna",
+          "command": "assertText",
+          "target": "css=[data-testid=\"stop-name-S03\"]",
+          "targets": [],
+          "value": "Centro"
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "ba3b9905-e6c1-4b84-8731-fc2cb93e5183",
+      "name": "Puntos clave",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": [
+        "8e5d438c-51b0-4468-8239-f9766574dd67",
+        "7f192809-85bd-4923-9843-4a2cbd3bc497",
+        "c7344d9e-284d-49ef-8d52-cdbff6db133c",
+        "51ba1fdd-51e7-4f18-be5d-e94927ae50c8",
+        "4eb0358a-191f-4c88-9786-89aa5df3b8bb",
+        "edfb90a0-f27c-4bc8-90a5-68cbfebc0059",
+        "e07ea94e-3e7b-4709-b737-4b4c02ced170",
+        "a9ce44aa-f1dd-45d4-b024-5e3eb526fb61"
+      ]
+    }
+  ],
+  "urls": [
+    "https://selenium-exr3-beryl.vercel.app"
+  ],
+  "plugins": []
+}

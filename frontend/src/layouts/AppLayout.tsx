@@ -20,12 +20,13 @@ export function AppLayout() {
     .at(-1)?.crumb;
   useDocumentTitle(currentCrumb);
 
-  // After client-side navigation, move focus to the main region so keyboard and
-  // screen reader users start at the new page content.
+  // After client-side navigation, start the new page at the top and move focus to the main
+  // region so keyboard and screen reader users start at the new page content.
   useEffect(() => {
     if (previousPathname.current !== pathname) {
       previousPathname.current = pathname;
-      mainRef.current?.focus();
+      window.scrollTo(0, 0);
+      mainRef.current?.focus({ preventScroll: true });
     }
   }, [pathname]);
 

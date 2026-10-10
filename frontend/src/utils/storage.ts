@@ -57,4 +57,5 @@ export const storageKeys = {
   dismissedServiceAlert: 'mi-ruta:dismissed-service-alert',
   authNotice: 'mi-ruta:auth-notice',
   fontScale: 'mi-ruta:font-scale',
+  guideProgress: 'mi-ruta:selenium-guide-progress',
 } as const;
