@@ -43,9 +43,9 @@ export function ArrivalBus() {
         {/* Stop */}
         <g className="arrival-bus__stop">
           <path d="M34 44v44" stroke="#475569" strokeWidth="3" strokeLinecap="round" />
-          <rect x="16" y="12" width="36" height="34" rx="6" fill="#059670" stroke="#1e293b" strokeWidth="2" />
+          <rect x="16" y="12" width="36" height="34" rx="6" fill="#2563eb" stroke="#1e293b" strokeWidth="2" />
           <rect x="25" y="17" width="18" height="13" rx="3" fill="#ffffff" />
-          <path d="M25 24h18" stroke="#059670" strokeWidth="2" />
+          <path d="M25 24h18" stroke="#2563eb" strokeWidth="2" />
           <text x="34" y="41" textAnchor="middle" fontSize="7" fontWeight="700" fill="#ffffff" fontFamily="system-ui, sans-serif">
             Mi Ruta
           </text>
@@ -55,7 +55,7 @@ export function ArrivalBus() {
         <g className="arrival-bus__drive">
           <g className="arrival-bus__brake">
             <rect x="70" y="24" width="194" height="62" rx="12" fill="#ffffff" stroke="#1e293b" strokeWidth="2.5" />
-            <rect x="70" y="66" width="194" height="8" fill="#059670" />
+            <rect x="70" y="66" width="194" height="8" fill="#2563eb" />
             <path d="M74 38q0-8 8-8h20v34H74z" fill="#1e3a5f" />
             <rect x="76" y="27" width="64" height="9" rx="2" fill="#0f172a" />
             <text className="arrival-bus__led" x="108" y="34" textAnchor="middle" fontSize="7" fontWeight="700" fontFamily="ui-monospace, monospace">

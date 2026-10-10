@@ -23,7 +23,7 @@ export function MapLegend({ routes }: MapLegendProps) {
       </h2>
       <ul className="grid gap-x-6 gap-y-2 text-sm text-slate-800 sm:grid-cols-2">
         <li className="flex items-center gap-2">
-          <Marker letter="A" color="#04775b" /> Origen
+          <Marker letter="A" color="#1d4ed8" /> Origen
         </li>
         <li className="flex items-center gap-2">
           <Marker letter="B" color="#b91c1c" /> Destino

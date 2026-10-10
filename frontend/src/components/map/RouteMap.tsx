@@ -16,7 +16,7 @@ const roleLabels: Record<StopRole, string> = {
 
 /** Role marker: letter + color, so the role never depends on color alone. */
 const roleMarker: Partial<Record<StopRole, { letter: string; fill: string }>> = {
-  origin: { letter: 'A', fill: '#04775b' },
+  origin: { letter: 'A', fill: '#1d4ed8' },
   destination: { letter: 'B', fill: '#b91c1c' },
   transfer: { letter: 'T', fill: '#b45309' },
 };

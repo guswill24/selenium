@@ -3,9 +3,12 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router';
 import { AuthProvider } from './context/AuthProvider.tsx';
 import { ScenarioProvider } from './context/ScenarioProvider.tsx';
+import { initFontScale } from './hooks/useFontScale.ts';
 import { createAppRouter } from './routes/router.tsx';
 import { initScenario } from './services/scenarioStore.ts';
 import './index.css';
+
+initFontScale();
 
 const rootElement = document.getElementById('root');
 

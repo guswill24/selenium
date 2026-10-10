@@ -1,8 +1,11 @@
-import { Info } from 'lucide-react';
+import { Bus, Info, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+// Second pose: the same illustration winking (created from control/present/asssets/gustavo.png).
+import teacherPhotoEnd from '../../assets/teacher-wink.webp';
 import teacherPhoto from '../../assets/teacher.webp';
-import { Button } from '../ui/Button.tsx';
 import { cn } from '../../utils/cn.ts';
+
+const TEACHER_AREAS = ['UX / UI', 'Producto', 'Desarrollo', 'Analítica', 'Datos', 'Arquitectura'];
 
 interface AboutDialogProps {
   open: boolean;
@@ -34,55 +37,67 @@ export function AboutDialog({ open, onClose }: AboutDialogProps) {
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
-      className="m-auto w-[calc(100%-2rem)] max-w-lg rounded-2xl p-0 shadow-xl backdrop:bg-slate-900/50"
-      aria-labelledby="about-dialog-title"
+      className="about-modal"
+      aria-labelledby="about-teacher-name"
+      aria-describedby="about-dialog-title"
       data-testid="about-dialog"
     >
-      <div className="space-y-5 p-6">
-        <header>
-          <h2 id="about-dialog-title" className="text-lg font-bold text-slate-900">
-            Acerca de Mi Ruta
-          </h2>
-          <p className="mt-1 text-sm text-slate-600" data-testid="about-app">
-            Laboratorio de Calidad de Software · Curso Calidad de Software (202016903) · UNAD
-          </p>
-        </header>
+      <button type="button" className="about-modal__close" onClick={onClose} aria-label="Cerrar" data-testid="about-dialog-close" autoFocus>
+        <X className="h-5 w-5" aria-hidden="true" />
+      </button>
 
-        <section aria-labelledby="about-teacher-name" className="space-y-4" data-testid="about-teacher">
-          <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-start sm:text-left">
+      {/* Two columns from tablet width: portrait side | divider | profile (styles in index.css). */}
+      <div className="about-modal__inner" data-testid="about-teacher">
+        <aside className="about-modal__side">
+          {/* Portrait: reveal on open, the two poses alternate gently, solid lift on hover, swaying sticker. */}
+          <div className="teacher-portrait" data-testid="about-teacher-portrait">
             <img
               src={teacherPhoto}
               alt="Ilustración del docente Gustavo Willyn Sánchez Rodríguez"
               width={480}
               height={396}
-              className="h-32 w-auto shrink-0 rounded-xl border border-slate-200 bg-white"
+              className="teacher-portrait__init"
               data-testid="about-teacher-photo"
             />
-            <div>
-              <p className="text-xs font-semibold tracking-wider text-brand-800 uppercase">Docente</p>
-              <h3 id="about-teacher-name" className="mt-1 font-bold text-slate-900" data-testid="about-teacher-name">
-                GUSTAVO WILLYN SÁNCHEZ RODRÍGUEZ
-              </h3>
-              <p className="mt-1 text-sm font-medium text-slate-700" data-testid="about-teacher-role">
-                Docente Tiempo Completo – UNAD
-              </p>
-            </div>
+            <img src={teacherPhotoEnd} alt="" aria-hidden="true" width={480} height={396} className="teacher-portrait__end" />
+            <span className="teacher-portrait__sticker" aria-hidden="true">
+              <Bus className="h-5 w-5" />
+            </span>
           </div>
-          <p className="text-sm text-slate-700" data-testid="about-teacher-education">
+          <div className="text-center">
+            <h2 id="about-teacher-name" className="text-2xl leading-tight font-extrabold text-slate-900 sm:text-3xl" data-testid="about-teacher-name">
+              GUSTAVO WILLYN SÁNCHEZ RODRÍGUEZ
+            </h2>
+            <p className="mt-2 text-sm font-medium text-slate-700" data-testid="about-teacher-role">
+              Docente Tiempo Completo – UNAD
+            </p>
+            <ul className="mt-4 flex flex-wrap justify-center gap-2" aria-label="Áreas" data-testid="about-teacher-areas">
+              {TEACHER_AREAS.map((area) => (
+                <li key={area} className="about-modal__tag">
+                  {area}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+
+        {/* Focusable: it scrolls on its own from tablet width (keyboard users can scroll it too). */}
+        <div className="about-modal__content" tabIndex={0} role="region" aria-label="Perfil del docente">
+          <p id="about-dialog-title" className="text-xs font-semibold tracking-wider text-brand-800 uppercase" data-testid="about-app">
+            Acerca de Mi Ruta · Laboratorio de Calidad de Software · UNAD
+          </p>
+          <h3 className="about-modal__heading">Formación</h3>
+          <p className="text-base leading-relaxed text-slate-700" data-testid="about-teacher-education">
             Ingeniero de Sistemas, Especialista en Informática y Telemática, Especialista en Gerencia de Proyectos y
             Magíster en Ingeniería Computacional por la Universidad de Caldas.
           </p>
-          <p className="text-sm text-slate-700" data-testid="about-teacher-experience">
+          <hr className="about-modal__rule" />
+          <h3 className="about-modal__heading">Experiencia</h3>
+          <p className="text-base leading-relaxed text-slate-700" data-testid="about-teacher-experience">
             Cuenta con experiencia en la dirección de proyectos tecnológicos y el diseño y desarrollo de software,
             sistemas de información y soluciones digitales, integrando tecnologías emergentes para impulsar la
             innovación.
           </p>
-        </section>
-
-        <div className="flex justify-end">
-          <Button variant="secondary" onClick={onClose} data-testid="about-dialog-close" autoFocus>
-            Cerrar
-          </Button>
         </div>
       </div>
     </dialog>

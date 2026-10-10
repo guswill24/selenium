@@ -1,6 +1,5 @@
 import { Eye, EyeOff } from 'lucide-react';
 import { useRef, useState, type FormEvent } from 'react';
-import { ScenarioBadge } from '../components/layout/ScenarioBadge.tsx';
 import { ErrorDetails } from '../components/feedback/ErrorDetails.tsx';
 import { Notice } from '../components/feedback/Notice.tsx';
 import { TextField } from '../components/form/TextField.tsx';
@@ -8,7 +7,6 @@ import { Button } from '../components/ui/Button.tsx';
 import { Card } from '../components/ui/Card.tsx';
 import { useAuth } from '../hooks/useAuth.ts';
 import { useDocumentTitle } from '../hooks/useDocumentTitle.ts';
-import { useScenario } from '../hooks/useScenario.ts';
 import { ApiError } from '../services/apiClient.ts';
 
 interface FieldErrors {
@@ -55,7 +53,6 @@ function toFailure(error: unknown): LoginFailure {
 
 export function LoginPage() {
   const { login, notice, clearNotice } = useAuth();
-  const { scenario } = useScenario();
   useDocumentTitle('Iniciar sesión');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -163,15 +160,6 @@ export function LoginPage() {
           </Button>
         </form>
       </Card>
-
-      {/* Only the login window in NORMAL. Another scenario may break login, so its badge (a link to the
-          public lab) appears as the way back to NORMAL. */}
-      {scenario !== 'NORMAL' && (
-        <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-slate-700 bg-slate-800 px-5 py-3 text-sm text-slate-200" data-testid="login-scenario">
-          <ScenarioBadge testId="login-scenario-badge" />
-          <span>Escenario de prueba activo. Ábrelo para volver a NORMAL.</span>
-        </div>
-      )}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { ExternalLink, Presentation, X } from 'lucide-react';
+import { BookOpenText, ExternalLink, Presentation, X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router';
 import { useAuth } from '../../hooks/useAuth.ts';
@@ -106,6 +106,20 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         </nav>
 
         <div className="border-t border-slate-800 px-3 py-3">
+          <NavLink
+            to="/case-study"
+            onClick={() => onClose(false)}
+            data-testid="nav-case-study"
+            className={({ isActive }) =>
+              cn(
+                'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
+                isActive ? 'bg-brand-700 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white',
+              )
+            }
+          >
+            <BookOpenText className="h-5 w-5 shrink-0" aria-hidden="true" />
+            <span>Caso de estudio</span>
+          </NavLink>
           {/* Static deck served from /presentacion/, outside the SPA router. */}
           <a
             href="/presentacion/index.html"

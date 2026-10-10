@@ -59,7 +59,7 @@ Antes de la sesión, abrir `/presentacion/?offline` en el equipo con el que se v
 | `index.html` | Presentación en una sola página: solo cambia la imagen, así la pantalla completa y la música no se interrumpen |
 | `slides.js` | Orden, título y texto alternativo de cada lámina; `anim` indica qué lámina está animada |
 | `anim/cover.js` | Animación de la portada |
-| `assets/slide-01.webp` … `slide-27.webp` | Láminas en WebP (convertidas de `control/sele0.png` … `sele26.png`, en ese orden: 0, 1, 2a, 3a, 4a, 5 … 26) |
+| `assets/slide-01.webp` … `slide-27.webp` | Láminas en WebP (convertidas de `control/sele0.png` … `sele26.png`, en ese orden: 0, 1, 2a, 3a, 4a, 5 … 26). La pantalla del portátil de la lámina 7 reproduce el menú del aplicativo con sus colores (fondo `slate-900`, ítem activo `brand-700`); el azul de marca del aplicativo es el mismo de las láminas |
 | `sw.js` | Service worker limitado a `/presentacion/`; no afecta a la aplicación ni a `/api` |
 | `manifest.webmanifest`, `icons/`, `et_douloureux.ogg` | Instalación como app, íconos y música |
 

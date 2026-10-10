@@ -56,4 +56,5 @@ export const storageKeys = {
   profile: (userId: string) => `mi-ruta:profile:${userId}`,
   dismissedServiceAlert: 'mi-ruta:dismissed-service-alert',
   authNotice: 'mi-ruta:auth-notice',
+  fontScale: 'mi-ruta:font-scale',
 } as const;

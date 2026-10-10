@@ -2,6 +2,7 @@ import { GraduationCap, Menu } from 'lucide-react';
 import type { RefObject } from 'react';
 import { Link } from 'react-router';
 import { useAuth } from '../../hooks/useAuth.ts';
+import { FontSizeControl } from './FontSizeControl.tsx';
 import { ScenarioBadge } from './ScenarioBadge.tsx';
 import { SIDEBAR_ID } from './Sidebar.tsx';
 import { UserMenu } from './UserMenu.tsx';
@@ -42,6 +43,7 @@ export function Topbar({ isMenuOpen, onOpenMenu, menuButtonRef }: TopbarProps) {
         </span>
 
         <div className="ml-auto flex flex-wrap items-center justify-end gap-2">
+          <FontSizeControl />
           <ScenarioBadge />
           {/* The laboratory is public: without a session, offer the way to sign in. */}
           {user ? (

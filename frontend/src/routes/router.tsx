@@ -81,7 +81,17 @@ export function createAppRouter() {
             </RequireAuth>
           ),
           handle: homeHandle,
-          children: [{ path: 'dashboard', element: <DashboardPage /> }, ...moduleRoutes],
+          children: [
+            { path: 'dashboard', element: <DashboardPage /> },
+            ...moduleRoutes,
+            // Course reading material, linked from the sidebar footer (not a module of the system under test).
+            // Loaded on demand: its text and image are not needed to start the app.
+            {
+              path: 'case-study',
+              lazy: async () => ({ Component: (await import('../pages/CaseStudyPage.tsx')).CaseStudyPage }),
+              handle: { crumb: 'Caso de estudio' } satisfies RouteHandle,
+            },
+          ],
         },
         { path: '*', element: <NotFoundPage /> },
       ],

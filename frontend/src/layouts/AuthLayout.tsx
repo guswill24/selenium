@@ -1,9 +1,13 @@
 import { Bus } from 'lucide-react';
 import { Outlet } from 'react-router';
+import { FontSizeControl } from '../components/layout/FontSizeControl.tsx';
 
 export function AuthLayout() {
   return (
     <div className="flex min-h-screen flex-col bg-slate-900">
+      <header className="flex justify-end px-4 pt-4">
+        <FontSizeControl tone="dark" />
+      </header>
       <main className="flex flex-1 items-center justify-center px-4 py-10" data-testid="auth-layout">
         <div className="w-full max-w-md">
           <div className="mb-6 flex flex-col items-center text-center">

@@ -64,7 +64,7 @@ export function AppLayout() {
           </div>
         </main>
         <footer className="border-t border-slate-200 bg-white px-4 py-4 text-center text-xs text-slate-600 sm:px-6" data-testid="app-footer">
-          Mi Ruta – Laboratorio de Calidad de Software · Calidad de Software 202016903 · UNAD · Datos simulados con fines educativos
+          Mi Ruta – Laboratorio de Calidad de Software · UNAD · Datos simulados con fines educativos
         </footer>
       </div>
 

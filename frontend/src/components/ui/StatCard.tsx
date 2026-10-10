@@ -15,7 +15,8 @@ export function StatCard({ label, value, icon: Icon, hint, testId }: StatCardPro
         <Icon className="h-6 w-6" aria-hidden="true" />
       </span>
       <div className="min-w-0">
-        <p className="text-sm text-slate-600">{label}</p>
+        {/* Long words wrap instead of overflowing when text is enlarged (WCAG 1.4.4). */}
+        <p className="text-sm text-slate-600 [overflow-wrap:anywhere]">{label}</p>
         <p className="text-2xl font-bold text-slate-900" data-testid={`${testId}-value`}>
           {value}
         </p>

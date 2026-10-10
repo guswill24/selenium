@@ -19,7 +19,9 @@ Mi Ruta aplica buenas prácticas básicas de accesibilidad (WCAG 2.1/2.2, nivele
 | Formularios | Cada campo tiene `<label>` asociada; obligatorios con `aria-required`; errores con `aria-invalid` y `aria-describedby` |
 | Mensajes | Errores con `role="alert"`; estados y resultados con `role="status"` o `aria-live="polite"`; prefijo oculto ("Error:", "Éxito:") para lectores de pantalla |
 | No depender del color | Estados con texto e ícono (badges, niveles de alerta con borde, texto e ícono); mapa con letras A/B/T y borde punteado para mantenimiento |
-| Contraste | Colores de texto verificados ≥ 4,5:1 (por ejemplo, blanco sobre verde de marca: 5,53:1) |
+| Tamaño del texto (WCAG 2.1, 1.4.4) | Control **A− / % / A+** en la barra superior y en el inicio de sesión: 100, 115, 130, 150, 175 y 200 %. Escala el tamaño de fuente raíz (en porcentaje, respetando el tamaño elegido en el navegador), así que texto, espaciado y controles crecen juntos. El botón central muestra el tamaño actual y vuelve a 100 %; el cambio se anuncia a lectores de pantalla. Se recuerda en el navegador y se aplica antes de mostrar la página |
+| Lectura en voz alta | Página **Caso de estudio**: lee el texto con la síntesis de voz del navegador (Web Speech API, solo voces de español de Colombia, es-CO; si el equipo no tiene ninguna, el navegador usa la que tenga y la página lo indica), por frases, resaltando y centrando en pantalla el fragmento que se lee; botones Escuchar / Pausar / Continuar / Detener, velocidad de 0,75× a 1,5×, elección de voz y botón por sección. La infografía tiene texto alternativo. Sin soporte de voz, la página lo informa y el texto sigue siendo compatible con lectores de pantalla |
+| Contraste | Colores de texto verificados ≥ 4,5:1 (por ejemplo, blanco sobre azul de marca: 5,17:1 en `brand-600` y 6,70:1 en `brand-700`) |
 | Imágenes e íconos | Íconos decorativos con `aria-hidden`; el mapa SVG tiene título, descripción y una **alternativa textual** |
 | Tablas | `<caption>` y encabezados con `scope`; el recuadro con desplazamiento horizontal se puede enfocar con el teclado |
 | Objetivos táctiles | Controles de al menos 24 × 24 px (WCAG 2.5.8) |

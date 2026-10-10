@@ -1,0 +1,751 @@
+{
+  "id": "f2ec5647-0c36-4da2-9ba5-8811dd0a42e6",
+  "version": "3.0",
+  "name": "Mi Ruta – demostración",
+  "url": "http://localhost:5173",
+  "tests": [
+    {
+      "id": "f6e68acc-1942-40a6-8563-1b6682c32a70",
+      "name": "01 Inicio de sesión válido",
+      "commands": [
+        {
+          "id": "acbbdd48-31e0-4d7a-8025-adb1ac8496b8",
+          "comment": "Escenario NORMAL para partir de un estado conocido",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "b619eb8b-c5a8-40a4-a4fb-103da93ff3cf",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "8563cf8a-ac78-4455-8610-228306f94583",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "b877bf40-0a27-4e03-84bf-4bb16bdd0f03",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "pasajero.demo"
+        },
+        {
+          "id": "88e7baf7-7d98-4b97-9f53-c783f61603d6",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-password\"]",
+          "targets": [],
+          "value": "Pasajero2026!"
+        },
+        {
+          "id": "474eab3a-b783-4a09-9041-6a43c369a26a",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "9b6646ce-0fd8-4ccd-9f71-c9134f6d8fcb",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"dashboard\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "e26f9341-46d1-4e4f-9064-3a890baeb9e8",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "css=[data-testid=\"welcome-message\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "574d6fd6-22e9-47dd-ba0f-c7f0f7761c56",
+          "comment": "",
+          "command": "executeScript",
+          "target": "return window.location.pathname",
+          "targets": [],
+          "value": "ruta"
+        },
+        {
+          "id": "4559d14a-6d9a-4524-9eea-92a1f6a033ff",
+          "comment": "La URL debe ser /dashboard",
+          "command": "assert",
+          "target": "ruta",
+          "targets": [],
+          "value": "/dashboard"
+        }
+      ]
+    },
+    {
+      "id": "202ed667-f0ad-4d14-82d1-99337fd452d4",
+      "name": "02 Contraseña incorrecta",
+      "commands": [
+        {
+          "id": "e59da282-c163-4867-aa90-9ec849a64245",
+          "comment": "Escenario NORMAL para partir de un estado conocido",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "2a33e18f-8d95-4cc4-a2a1-2a76d439d15e",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "c026944e-9bd3-420d-b6d4-c3b53b8ea10c",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "e02556f2-08a1-4f5e-85d9-4de941d5df37",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "pasajero.demo"
+        },
+        {
+          "id": "c70c2bfe-efb4-4b65-bd03-a70a26a98317",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-password\"]",
+          "targets": [],
+          "value": "incorrecta"
+        },
+        {
+          "id": "7f453e1e-e325-4548-9554-96ab87f496a8",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "469b33c4-32e0-4473-b73f-c5da27a67c78",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"login-error\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "2c1f448b-a50d-47d6-8a7f-59ee3e7e85e1",
+          "comment": "",
+          "command": "storeAttribute",
+          "target": "css=[data-testid=\"login-error\"]@data-error-code",
+          "targets": [],
+          "value": "codigo"
+        },
+        {
+          "id": "98d89763-be54-4cff-b676-2305bd69bd13",
+          "comment": "",
+          "command": "assert",
+          "target": "codigo",
+          "targets": [],
+          "value": "WRONG_PASSWORD"
+        },
+        {
+          "id": "dc68078e-1cb3-4ca2-a256-ccc97e0d8a1b",
+          "comment": "",
+          "command": "assertElementNotPresent",
+          "target": "css=[data-testid=\"dashboard\"]",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "c90918ae-e31a-4246-9e67-e38e5b98d2bb",
+      "name": "03 Campos obligatorios vacíos",
+      "commands": [
+        {
+          "id": "61e606e0-934b-41f4-81a3-ab8de5408337",
+          "comment": "",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "72473a1f-265d-4ccb-a77d-c5a891816899",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "957f3a87-8fce-400f-a7f7-650895e90649",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "97d9237e-511b-4a1c-946f-730709f8dcfc",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "c6484c62-e726-49d0-8286-666e707ba5f9",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"error-username\"]",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "9407aaee-e663-40ef-b496-760e67bd90da",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "css=[data-testid=\"error-password\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "915cc606-f1fd-4ade-8808-3e4e2b7201f4",
+          "comment": "",
+          "command": "storeAttribute",
+          "target": "css=[data-testid=\"input-username\"]@aria-invalid",
+          "targets": [],
+          "value": "invalido"
+        },
+        {
+          "id": "e7bb45e8-84fd-4166-821a-f9128c6d353f",
+          "comment": "",
+          "command": "assert",
+          "target": "invalido",
+          "targets": [],
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "id": "a2dd4481-c89c-4254-b700-6691ba91663c",
+      "name": "04 Cierre de sesión",
+      "commands": [
+        {
+          "id": "906d128d-d55b-41cc-9041-840080cb1fed",
+          "comment": "Escenario NORMAL para partir de un estado conocido",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "595a2823-da34-4f8d-a97c-2105cdd3760c",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "517cebec-eebf-4c12-917e-c94062182ba8",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "898cd488-6aef-4e8f-b64f-1df2725152a1",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "pasajero.demo"
+        },
+        {
+          "id": "69f54057-ca04-48b9-8450-0ee7c94d5c32",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-password\"]",
+          "targets": [],
+          "value": "Pasajero2026!"
+        },
+        {
+          "id": "9ecd2e38-44f7-4c46-ab15-e29f3b385b38",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "ac78b89c-9a3b-4acf-b851-0dbad2e3a42a",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"dashboard\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "3bce68b7-d422-486f-b4ff-0d1585c6f6f1",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-logout\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cf750818-e97c-4df8-81a8-26f739b6f31f",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"logout-success\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "5b0144ab-8cf4-4cc7-b439-81a72b428319",
+          "comment": "",
+          "command": "executeScript",
+          "target": "return window.location.pathname",
+          "targets": [],
+          "value": "ruta"
+        },
+        {
+          "id": "e93a6bc2-06ed-4a7d-9dde-1413bc4d6402",
+          "comment": "",
+          "command": "assert",
+          "target": "ruta",
+          "targets": [],
+          "value": "/login"
+        }
+      ]
+    },
+    {
+      "id": "04c64c88-d965-4e8f-98e2-49540d31033e",
+      "name": "05 Ventana Acerca de",
+      "commands": [
+        {
+          "id": "3ee5fd29-49a8-44d9-ae1d-169bee4a7bdf",
+          "comment": "Escenario NORMAL para partir de un estado conocido",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "ca50ba4a-6e2a-44eb-a147-35bd233b6250",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "40594d23-5bf5-4a0c-95c7-af7af8c564ba",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "94427b32-9b17-4a15-b433-df584b77de0a",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-username\"]",
+          "targets": [],
+          "value": "pasajero.demo"
+        },
+        {
+          "id": "f4ccb023-11aa-4536-b273-78d645c73bee",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-testid=\"input-password\"]",
+          "targets": [],
+          "value": "Pasajero2026!"
+        },
+        {
+          "id": "95187aee-356b-41ea-b2d9-b903134963fa",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "f9746b16-3540-4bbd-9d0b-946a07dea588",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"dashboard\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "e617a61c-ac41-45f9-b997-e5fbcb565fa5",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"nav-about\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "0394c17f-07bd-4528-a9e9-caa31105bbc2",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"about-teacher-name\"]",
+          "targets": [],
+          "value": "5000"
+        },
+        {
+          "id": "145e570b-32b1-4752-b656-fcf5c3ad9184",
+          "comment": "",
+          "command": "assertText",
+          "target": "css=[data-testid=\"about-teacher-name\"]",
+          "targets": [],
+          "value": "GUSTAVO WILLYN SÁNCHEZ RODRÍGUEZ"
+        },
+        {
+          "id": "8c7d03a0-f86e-47e0-bd71-d97a43d26496",
+          "comment": "",
+          "command": "assertText",
+          "target": "css=[data-testid=\"about-teacher-role\"]",
+          "targets": [],
+          "value": "Docente Tiempo Completo – UNAD"
+        },
+        {
+          "id": "30d42a49-b3e8-40e3-90d9-881cb9a69750",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"about-dialog-close\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "84074d22-d0b0-43cf-8bd5-6e5dea4a902c",
+          "comment": "",
+          "command": "waitForElementNotVisible",
+          "target": "css=[data-testid=\"about-dialog\"]",
+          "targets": [],
+          "value": "5000"
+        }
+      ]
+    },
+    {
+      "id": "683d1e82-5ba0-42f8-a3e1-4df68236369d",
+      "name": "06 Aumentar tamaño del texto",
+      "commands": [
+        {
+          "id": "a9bae7a0-d387-40ba-bf8d-914ff4bea197",
+          "comment": "",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "d94dfe04-c426-4406-88ef-13e5defddb33",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1280x800",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "ee11e17f-03b2-4a98-9080-b264106e277c",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"font-size-control\"]",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "cefddc35-6b0b-4a4d-9427-f1567f9f52a9",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-font-increase\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "ea8bb07a-e941-4413-a8aa-18a418882757",
+          "comment": "",
+          "command": "storeAttribute",
+          "target": "css=[data-testid=\"font-size-control\"]@data-scale",
+          "targets": [],
+          "value": "escala"
+        },
+        {
+          "id": "bcd1a622-bb54-4186-8405-01e7c61a07bb",
+          "comment": "",
+          "command": "assert",
+          "target": "escala",
+          "targets": [],
+          "value": "115"
+        },
+        {
+          "id": "d3b8db80-61cf-4dcd-b309-b1a06e33d8c8",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"btn-font-reset\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "871ca096-c178-4d56-b2c2-5b010c25fdae",
+          "comment": "",
+          "command": "storeAttribute",
+          "target": "css=[data-testid=\"font-size-control\"]@data-scale",
+          "targets": [],
+          "value": "escala"
+        },
+        {
+          "id": "3e20d894-b516-4b4d-8bc5-e6c7adff7c24",
+          "comment": "",
+          "command": "assert",
+          "target": "escala",
+          "targets": [],
+          "value": "100"
+        }
+      ]
+    },
+    {
+      "id": "8e818159-b674-4e74-ad61-0f87aaebed9b",
+      "name": "07 Prueba manual",
+      "commands": [
+        {
+          "id": "9ec59228-9217-42d0-a704-47c4c9b8c019",
+          "command": "open",
+          "target": "/login?scenario=NORMAL",
+          "value": ""
+        },
+        {
+          "command": "click",
+          "target": "id=username",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "caf184f3-cdd7-46f6-ae6f-857fed3a6430",
+          "targets": [
+            [
+              "id=username",
+              "id"
+            ],
+            [
+              "name=username",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-username\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#username",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='username'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/div/div/input)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "type",
+          "target": "id=username",
+          "value": "pasajero.demo",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "9c041b42-f404-478c-8dc4-e87dea366624",
+          "targets": [
+            [
+              "id=username",
+              "id"
+            ],
+            [
+              "name=username",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-username\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#username",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='username'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/div/div/input)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "id=password",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "6b05b2df-869c-416a-a373-7357a493915b",
+          "targets": [
+            [
+              "id=password",
+              "id"
+            ],
+            [
+              "name=password",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-password\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#password",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='password'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/div[2]/div/input)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "type",
+          "target": "id=password",
+          "value": "Pasajero2026!",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "e3a7fde8-5b00-4157-82c2-b492b1384460",
+          "targets": [
+            [
+              "id=password",
+              "id"
+            ],
+            [
+              "name=password",
+              "name"
+            ],
+            [
+              "css=[data-testid=\"input-password\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=#password",
+              "css:finder"
+            ],
+            [
+              "xpath=(//input[@id='password'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/div[2]/div/input)[1]",
+              "xpath:idRelative"
+            ]
+          ]
+        },
+        {
+          "command": "click",
+          "target": "css=[data-state=\"idle\"]",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "019cb695-517a-4f4e-9ca9-0a0b03e9b044",
+          "targets": [
+            [
+              "css=[data-state=\"idle\"]",
+              "css:data-attr"
+            ],
+            [
+              "css=.gap-2",
+              "css:finder"
+            ],
+            [
+              "xpath=(//button[@type='submit' and text()='Ingresar'])[1]",
+              "xpath:attributes"
+            ],
+            [
+              "xpath=(//div[@id='root']/div/main/div/div[2]/section/form/button)[1]",
+              "xpath:idRelative"
+            ],
+            [
+              "xpath=//button[contains(.,'Ingresar')]",
+              "xpath:innerText"
+            ]
+          ]
+        },
+        {
+          "command": "runScript",
+          "target": "window.scrollTo(0,0)",
+          "value": "",
+          "insertBeforeLastCommand": false,
+          "frameLocation": "root",
+          "winHandleId": "root",
+          "id": "e00e2bec-434c-4ef5-aac5-76ec8ec1c41e",
+          "targets": [
+            [
+              "window.scrollTo(0,0)",
+              ""
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "c23c5d7a-db42-4984-abde-53ac41b72667",
+      "name": "Demostración",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": [
+        "f6e68acc-1942-40a6-8563-1b6682c32a70",
+        "202ed667-f0ad-4d14-82d1-99337fd452d4",
+        "c90918ae-e31a-4246-9e67-e38e5b98d2bb",
+        "a2dd4481-c89c-4254-b700-6691ba91663c",
+        "04c64c88-d965-4e8f-98e2-49540d31033e",
+        "683d1e82-5ba0-42f8-a3e1-4df68236369d"
+      ]
+    }
+  ],
+  "urls": [
+    "http://localhost:5173"
+  ],
+  "plugins": []
+}

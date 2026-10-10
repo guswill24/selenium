@@ -95,10 +95,11 @@ export function DashboardPage() {
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="flex items-center justify-between gap-2 font-semibold text-slate-900">
-                    {item.label}
-                    <ChevronRight className="h-4 w-4 text-slate-400 group-hover:text-brand-700" aria-hidden="true" />
+                    {/* Long names ("Planificador") wrap instead of pushing the arrow out with enlarged text. */}
+                    <span className="min-w-0 [overflow-wrap:anywhere]">{item.label}</span>
+                    <ChevronRight className="h-4 w-4 shrink-0 text-slate-400 group-hover:text-brand-700" aria-hidden="true" />
                   </span>
-                  <span className="mt-1 block text-sm text-slate-600">{item.description}</span>
+                  <span className="mt-1 block text-sm text-slate-600 [overflow-wrap:anywhere]">{item.description}</span>
                 </span>
               </Link>
             </li>

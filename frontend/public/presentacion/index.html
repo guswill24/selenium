@@ -170,7 +170,7 @@ wake();
 // (slides and music) so it can be presented without internet.
 (()=>{
   if(!('serviceWorker' in navigator)||!window.caches)return;
-  const CACHE='mi-ruta-deck-v4';
+  const CACHE='mi-ruta-deck-v5';
   const toast=document.getElementById('toast');
   const say=(t,ms)=>{toast.textContent=t;toast.hidden=false;clearTimeout(say.h);if(ms)say.h=setTimeout(()=>toast.hidden=true,ms)};
   navigator.serviceWorker.register('sw.js').catch(()=>{});
