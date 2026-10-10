@@ -8,9 +8,10 @@ import { useMediaQuery } from '../../hooks/useMediaQuery.ts';
  *
  * Testability: it never blocks or delays the page. It floats over the content (fixed, so no layout
  * shift), ignores the pointer (clicks reach the elements below), is hidden from assistive technology
- * and leaves the DOM when it ends. Not shown with reduced motion.
+ * and leaves the DOM when it ends. Not shown with reduced motion. While `paused` (the post-login
+ * notice is still open) it waits, and plays once the notice is accepted.
  */
-export function ArrivalBus() {
+export function ArrivalBus({ paused = false }: { paused?: boolean }) {
   const { justLoggedIn, acknowledgeLogin } = useAuth();
   const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
 
@@ -18,7 +19,7 @@ export function ArrivalBus() {
     if (justLoggedIn && reduceMotion) acknowledgeLogin();
   }, [justLoggedIn, reduceMotion, acknowledgeLogin]);
 
-  if (!justLoggedIn || reduceMotion) return null;
+  if (!justLoggedIn || reduceMotion || paused) return null;
 
   const handleAnimationEnd = (event: AnimationEvent<HTMLDivElement>) => {
     // Child animations bubble up: only the card's own fade-out ends the micro-interaction.

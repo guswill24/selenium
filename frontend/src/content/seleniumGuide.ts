@@ -99,7 +99,10 @@ export const guideSections: GuideSection[] = [
       },
       {
         kind: 'bullets',
-        items: ['**Esperas:** antes de verificar algo, la prueba espera a que la página termine de cargar.'],
+        items: [
+          '**Esperas:** antes de verificar algo, la prueba espera a que la página termine de cargar.',
+          '**Aviso al iniciar sesión:** después de pulsar **Ingresar** aparece la ventana **Aviso importante**, y mientras está abierta el resto de la página no responde. Por eso cada prueba espera el botón `css=[data-testid="learning-notice-accept"]` y lo pulsa antes de continuar.',
+        ],
       },
       {
         kind: 'table',
@@ -184,7 +187,7 @@ export const guideSections: GuideSection[] = [
         items: [
           '**Borrar** los comandos `mouseOver` y `runScript window.scrollTo(…)`: registran movimientos del mouse y desplazamientos que no forman parte del caso de prueba.',
           '**Cambiar cada selector** por su `data-testid` (columna Target). En la lista desplegable del Target, Selenium IDE ya ofrece la opción `css=[data-testid="…"]`.',
-          '**Agregar esperas** (`waitForElementVisible`) después de iniciar sesión, cambiar de página o pulsar un botón que carga datos.',
+          '**Agregar esperas** (`waitForElementVisible`) después de iniciar sesión, cambiar de página o pulsar un botón que carga datos. Después de iniciar sesión, además, esperar y pulsar el botón del aviso (`css=[data-testid="learning-notice-accept"]`).',
           '**Agregar al menos una verificación** (`assertText`, `assertElementPresent` u otra): una prueba sin verificaciones no comprueba nada.',
         ],
       },

@@ -3,6 +3,8 @@ import { Outlet, useLocation, useMatches } from 'react-router';
 import { ServiceAlertBanner } from '../components/alerts/ServiceAlertBanner.tsx';
 import { ArrivalBus } from '../components/layout/ArrivalBus.tsx';
 import { Breadcrumbs, type RouteHandle } from '../components/layout/Breadcrumbs.tsx';
+import { LearningNoticeDialog } from '../components/layout/LearningNoticeDialog.tsx';
+import { useLearningNotice } from '../hooks/useLearningNotice.ts';
 import { useDocumentTitle } from '../hooks/useDocumentTitle.ts';
 import { Sidebar } from '../components/layout/Sidebar.tsx';
 import { Topbar } from '../components/layout/Topbar.tsx';
@@ -11,6 +13,7 @@ export function AppLayout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mainRef = useRef<HTMLElement>(null);
+  const learningNotice = useLearningNotice();
   const { pathname } = useLocation();
   const previousPathname = useRef(pathname);
   // The deepest breadcrumb names the current screen ("Rutas", "Gestión de rutas"…).
@@ -69,7 +72,9 @@ export function AppLayout() {
         </footer>
       </div>
 
-      <ArrivalBus />
+      {/* The welcome bus waits until the learning notice is accepted, so both animations never overlap. */}
+      <ArrivalBus paused={learningNotice.open} />
+      <LearningNoticeDialog open={learningNotice.open} onAccept={learningNotice.accept} />
     </div>
   );
 }

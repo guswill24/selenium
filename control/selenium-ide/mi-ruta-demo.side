@@ -57,6 +57,22 @@
           "value": ""
         },
         {
+          "id": "5901b185-7f87-4bcb-b87c-c762eb1e856f",
+          "comment": "Aceptar el aviso que aparece al iniciar sesión",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "46e8b165-d274-4059-912d-3f0225b09cbe",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
           "id": "9b6646ce-0fd8-4ccd-9f71-c9134f6d8fcb",
           "comment": "",
           "command": "waitForElementVisible",
@@ -299,6 +315,22 @@
           "value": ""
         },
         {
+          "id": "cb0d2d15-443b-4f4e-8d08-d2c4b5365fb1",
+          "comment": "Aceptar el aviso que aparece al iniciar sesión",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "da9e609b-0dd5-432a-a7d6-681e51148514",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
           "id": "ac78b89c-9a3b-4acf-b851-0dbad2e3a42a",
           "comment": "",
           "command": "waitForElementVisible",
@@ -389,6 +421,22 @@
           "comment": "",
           "command": "click",
           "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "4e28124e-60fd-448a-bb6e-4c5622203b1f",
+          "comment": "Aceptar el aviso que aparece al iniciar sesión",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "610b4326-0d55-4201-8053-aca9ade5893d",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
           "targets": [],
           "value": ""
         },
@@ -775,6 +823,22 @@
           "comment": "",
           "command": "click",
           "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "59e96226-e5bd-47f3-9940-7d941ab71dfc",
+          "comment": "Aceptar el aviso que aparece al iniciar sesión",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "42e64e49-0ab1-4783-bf4e-b8114d88bc88",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
           "targets": [],
           "value": ""
         },

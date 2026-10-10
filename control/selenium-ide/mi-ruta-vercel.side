@@ -57,6 +57,22 @@
           "value": ""
         },
         {
+          "id": "8004adb5-0531-4d52-8793-77e736c0ae45",
+          "comment": "Aceptar el aviso que aparece al iniciar sesión",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "53225930-094b-4138-b2ec-f71054ff84d2",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
           "id": "2fc9c941-4750-4cd1-a5ae-004fcfc4022b",
           "comment": "",
           "command": "waitForElementVisible",
@@ -139,6 +155,22 @@
           "comment": "",
           "command": "click",
           "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "280b053c-ada0-40cb-96db-11c424074bce",
+          "comment": "Aceptar el aviso que aparece al iniciar sesión",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "85d80e35-2add-4ae6-9224-7821f38df89b",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
           "targets": [],
           "value": ""
         },
@@ -285,6 +317,22 @@
           "value": ""
         },
         {
+          "id": "22126e9b-8497-4d23-b92a-ee6c712f43ec",
+          "comment": "Aceptar el aviso que aparece al iniciar sesión",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "5ea57807-9227-437c-9698-13c604db193a",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
           "id": "2fc9c941-4750-4cd1-a5ae-004fcfc4022b",
           "comment": "",
           "command": "waitForElementVisible",
@@ -411,6 +459,22 @@
           "value": ""
         },
         {
+          "id": "8c893c9b-8b80-476a-a066-668b5432dcb3",
+          "comment": "Aceptar el aviso que aparece al iniciar sesión",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "6103d1fe-5775-4540-b14c-6ed14509ebc2",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
           "id": "2fc9c941-4750-4cd1-a5ae-004fcfc4022b",
           "comment": "",
           "command": "waitForElementVisible",
@@ -533,6 +597,22 @@
           "comment": "",
           "command": "click",
           "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "eaa61338-604d-4e5c-b8f4-ddc2318d7a50",
+          "comment": "Aceptar el aviso que aparece al iniciar sesión",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "911e59b1-1e1a-407f-bdf7-af43ff0ccb0a",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
           "targets": [],
           "value": ""
         },
@@ -809,6 +889,22 @@
           "comment": "",
           "command": "click",
           "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cfdb2b5e-56f0-4160-97b3-ee77e68c7a66",
+          "comment": "Aceptar el aviso que aparece al iniciar sesión",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "633fb6a8-b472-4c32-94fb-28f6c4599d60",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
           "targets": [],
           "value": ""
         },
@@ -1394,6 +1490,22 @@
           "comment": "Antes: css=[data-state=\"idle\"] (estado que cambia)",
           "command": "click",
           "target": "css=[data-testid=\"btn-login\"]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "c5158da8-a27c-4c11-ace2-39531d4383e5",
+          "comment": "Aceptar el aviso que aparece al iniciar sesión",
+          "command": "waitForElementVisible",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
+          "targets": [],
+          "value": "15000"
+        },
+        {
+          "id": "21fcd717-7408-45b8-930e-312b57af0fbe",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-testid=\"learning-notice-accept\"]",
           "targets": [],
           "value": ""
         },

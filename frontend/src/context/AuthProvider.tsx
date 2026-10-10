@@ -48,6 +48,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const endSession = useCallback((reason: SessionNotice) => {
     removeKey(storageKeys.session);
+    removeSession(storageKeys.learningNotice);
     setAuthToken(null);
     setSession(null);
     setUser(null);
@@ -105,6 +106,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setJustLoggedOut(false);
     setJustLoggedIn(true);
     removeSession(storageKeys.authNotice);
+    // Every login must acknowledge the learning notice; it stays pending across reloads until accepted.
+    writeSession(storageKeys.learningNotice, 'pending');
   }, []);
 
   const acknowledgeLogin = useCallback(() => setJustLoggedIn(false), []);
