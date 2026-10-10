@@ -1,4 +1,4 @@
-import { CheckCircle2, Circle, Download, FileText, RotateCcw } from 'lucide-react';
+import { CheckCircle2, Circle, Download, FileText, PlayCircle, RotateCcw, TriangleAlert } from 'lucide-react';
 import { useEffect, useState, type ReactNode } from 'react';
 import { Button } from '../components/ui/Button.tsx';
 import { Card } from '../components/ui/Card.tsx';
@@ -164,6 +164,52 @@ function Block({ block, sectionId, index, checks, onToggleCheck }: BlockProps) {
             <Download className="h-4 w-4" aria-hidden="true" /> {block.label}
           </a>
         </div>
+      );
+    case 'image':
+      return (
+        <figure className="space-y-2">
+          <img
+            src={block.src}
+            alt={block.alt}
+            width={block.width}
+            height={block.height}
+            loading="lazy"
+            className="h-auto w-full max-w-xl rounded-xl border border-slate-200 shadow-sm"
+          />
+          <figcaption className="text-sm text-slate-600">{block.caption}</figcaption>
+        </figure>
+      );
+    case 'video':
+      return (
+        <figure className="space-y-3" data-testid={`selenium-guide-video-${block.id}`}>
+          <figcaption className="font-semibold text-slate-900">Video de apoyo</figcaption>
+          <p className="flex gap-3 rounded-xl border border-brand-200 bg-brand-50 p-4 text-sm text-slate-800" data-testid={`selenium-guide-video-${block.id}-intro`}>
+            <PlayCircle className="mt-0.5 h-5 w-5 shrink-0 text-brand-700" aria-hidden="true" />
+            <span className="min-w-0">
+              <Inline text={block.intro} />
+            </span>
+          </p>
+          <div className="aspect-video overflow-hidden rounded-xl border border-slate-200 bg-slate-900">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${block.youtubeId}?start=${block.startSeconds}`}
+              title={`${block.title} (${block.author})`}
+              className="h-full w-full"
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+          <p className="text-sm text-slate-600">
+            <Inline text={`${block.title} · ${block.author} · https://www.youtube.com/watch?v=${block.youtubeId}&t=${block.startSeconds}s`} />
+          </p>
+          <div className="flex gap-3 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-slate-800" data-testid={`selenium-guide-video-${block.id}-note`}>
+            <TriangleAlert className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" aria-hidden="true" />
+            <p className="min-w-0">
+              <Inline text={block.note} />
+            </p>
+          </div>
+        </figure>
       );
     case 'checklist':
       return (

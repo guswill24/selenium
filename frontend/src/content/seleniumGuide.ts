@@ -2,6 +2,8 @@
 // (the same .docx is offered for download at the end of the page). Inline `code` and **bold** are
 // rendered by the page.
 
+import seleniumWelcome from '../assets/selenium-ide-welcome.jpg';
+
 export type GuideBlock =
   | { kind: 'paragraph'; text: string }
   | { kind: 'bullets'; items: string[] }
@@ -9,7 +11,9 @@ export type GuideBlock =
   | { kind: 'table'; caption: string; headers: string[]; rows: string[][] }
   | { kind: 'code'; caption: string; code: string }
   | { kind: 'checklist'; id: string; title: string; items: string[] }
-  | { kind: 'download'; id: string; href: string; fileName: string; label: string; description: string };
+  | { kind: 'download'; id: string; href: string; fileName: string; label: string; description: string }
+  | { kind: 'image'; src: string; alt: string; caption: string; width: number; height: number }
+  | { kind: 'video'; id: string; youtubeId: string; startSeconds: number; title: string; author: string; intro: string; note: string };
 
 export interface GuideSection {
   id: string;
@@ -55,8 +59,8 @@ export const guideSections: GuideSection[] = [
       {
         kind: 'steps',
         items: [
-          'Abrir la versión publicada en https://github.com/SeleniumHQ/selenium-ide/releases.',
-          'Descargar el instalador de la versión 4 para el sistema operativo del equipo (en Windows, el archivo `.exe`).',
+          'Abrir la versión 4.0.1 en el repositorio oficial de Selenium en GitHub: https://github.com/SeleniumHQ/selenium-ide/releases/tag/v4.0.1-beta.14.',
+          'En **Assets**, descargar el instalador para el sistema operativo del equipo (en Windows, `Selenium-IDE-Setup-4.0.1-beta.14.exe`).',
           'Ejecutar el instalador. Si Windows muestra una advertencia de SmartScreen, elegir **Más información** y luego **Ejecutar de todas formas**.',
           'Esperar unos segundos: la instalación termina sin preguntas y crea un acceso directo.',
           'Abrir **Selenium IDE** desde el menú Inicio o el escritorio.',
@@ -64,7 +68,58 @@ export const guideSections: GuideSection[] = [
       },
       {
         kind: 'paragraph',
-        text: 'Si aparece la pantalla de bienvenida con las opciones para crear o abrir un proyecto, la instalación quedó lista.',
+        text: 'Si aparece la pantalla de bienvenida con las opciones para crear o abrir un proyecto, la instalación quedó lista. La sección siguiente explica esa pantalla.',
+      },
+      {
+        kind: 'video',
+        id: 'install-video',
+        youtubeId: 'KskSQI5ZPVM',
+        startSeconds: 130,
+        title: 'Automatización de pruebas con Selenium IDE | Curso paso a paso con ejemplo',
+        author: 'Geek QA',
+        intro: '**Vea el video desde el minuto 2:10.** El reproductor ya arranca en ese punto. Los primeros minutos muestran la instalación de la extensión de Google Chrome, que no es la que se usa en el curso.',
+        note: '**Importante:** instale Selenium IDE **4.0.1** como aplicación de escritorio, descargándola únicamente desde el repositorio oficial y autorizado de Selenium en GitHub: https://github.com/SeleniumHQ/selenium-ide/releases/tag/v4.0.1-beta.14. En Windows, el archivo es `Selenium-IDE-Setup-4.0.1-beta.14.exe`. No use la extensión de Chrome ni descargue el instalador desde sitios de terceros.',
+      },
+    ],
+  },
+  {
+    id: 'primer-arranque',
+    title: 'Primer arranque: abrir o crear un proyecto',
+    summary: 'Las dos opciones de la pantalla de bienvenida de Selenium IDE 4.0.1.',
+    blocks: [
+      {
+        kind: 'paragraph',
+        text: 'Al abrir Selenium IDE 4.0.1 aparece la ventana **Welcome to the Selenium IDE client**. En ella se ve la ruta del archivo de registros (Your log file path), dos botones para abrir o crear un proyecto y la lista **Recent Projects**, con los proyectos abiertos recientemente: un clic sobre cualquiera de ellos lo vuelve a abrir.',
+      },
+      {
+        kind: 'image',
+        src: seleniumWelcome,
+        alt: 'Ventana de bienvenida de Selenium IDE con los botones LOAD PROJECT y CREATE PROJECT y la lista Recent Projects.',
+        caption: 'Pantalla de bienvenida de Selenium IDE 4.0.1 (las rutas con datos del usuario aparecen difuminadas)',
+        width: 596,
+        height: 402,
+      },
+      {
+        kind: 'table',
+        caption: 'Opciones de la pantalla de bienvenida',
+        headers: ['Opción', 'Qué hace', 'Cuándo usarla'],
+        rows: [
+          ['**LOAD PROJECT**', 'Abre un proyecto que ya existe (archivo `.side`)', 'Para seguir las pruebas de ejemplo de Mi Ruta: se selecciona el archivo `mi-ruta-vercel.side` que se descarga en la sección siguiente'],
+          ['**CREATE PROJECT**', 'Crea un proyecto nuevo, sin pruebas', 'Para los ejercicios de la entrega, que se realizan sobre el caso de estudio propio del grupo'],
+        ],
+      },
+      {
+        kind: 'paragraph',
+        text: 'Para crear el proyecto de la entrega:',
+      },
+      {
+        kind: 'steps',
+        items: [
+          'Pulsar **CREATE PROJECT**.',
+          'Escribir el nombre del proyecto. Se sugiere usar el nombre del caso de estudio.',
+          'Ya dentro del proyecto, abrir la pestaña **TESTS**.',
+          'Pulsar el botón **(+)** para crear cada prueba automatizada, darle un nombre y construir sus pasos tal como se indicó en el CIPAS.',
+        ],
       },
     ],
   },
@@ -83,7 +138,7 @@ export const guideSections: GuideSection[] = [
         href: '/descargas/mi-ruta-vercel.side',
         fileName: 'mi-ruta-vercel.side',
         label: 'Descargar pruebas',
-        description: 'Proyecto de Selenium IDE con las pruebas de ejemplo · Archivo .side (se abre con Open project)',
+        description: 'Proyecto de Selenium IDE con las pruebas de ejemplo · Archivo .side (se abre con LOAD PROJECT)',
       },
       {
         kind: 'bullets',
@@ -121,7 +176,7 @@ export const guideSections: GuideSection[] = [
       {
         kind: 'steps',
         items: [
-          'Abrir Selenium IDE y elegir **Open project** (abrir proyecto).',
+          'Abrir Selenium IDE y elegir **LOAD PROJECT** (abrir proyecto).',
           'Seleccionar el archivo `mi-ruta-vercel.side`.',
           'Pulsar **Run all tests** para ejecutar todas las pruebas, o seleccionar una y pulsar **Run current test**.',
           'Revisar el resultado: los pasos en verde pasaron; los pasos en rojo indican una diferencia entre lo esperado y lo obtenido. El panel **Log** explica el motivo.',
